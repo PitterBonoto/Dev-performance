@@ -24,6 +24,10 @@ function GoToHealth(){
   navigate("/Saude");
 }
 
+function GoToStudies(){
+  navigate("/Estudos");
+}
+
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
@@ -46,7 +50,7 @@ function GoToHealth(){
         </CornerstoneContainer>
 
         <CornerstoneContainer>
-          <Cornerstone></Cornerstone>
+          <Cornerstone onClick={GoToStudies}></Cornerstone>
           <CornestoneTitle>Estudos</CornestoneTitle>
           <ProgressExt>
             <ProgressInt></ProgressInt>
