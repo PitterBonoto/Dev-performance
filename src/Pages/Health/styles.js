@@ -22,7 +22,7 @@ export const Logo = styled.img`
 export const ContainerItensPrincipal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 5%;
+  margin-top: 3%;
   //background: #000;
   z-index: 1;
 ` 
@@ -36,9 +36,10 @@ export const ContainerItens = styled.div`
   );
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  width: 280px;
+  width: 330px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 15px;
 `;
 

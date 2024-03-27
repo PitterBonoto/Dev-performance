@@ -42,7 +42,7 @@ function Studies() {
       
       </ContainerItensPrincipal>
       <ContainerCitation>
-        <Citation>Por maior que seja o seu cansaço, nunca deixe de estudar! Estudar é um privilégio e só o seu esforço pessoal te levará a conhecer pessoas e mundos que os acomodados jamais conhecerão!</Citation>
+        <Citation>"Por maior que seja o seu cansaço, nunca deixe de estudar! Estudar é um privilégio e só o seu esforço pessoal te levará a conhecer pessoas e mundos que os acomodados jamais conhecerão!"</Citation>
         <ImgSaude alt="imagem-ginastica" src={ImgSaudeExerc}/>
       </ContainerCitation>
     </ContainerPrincipal>
