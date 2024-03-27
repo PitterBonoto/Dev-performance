@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router";
+
 import {
   Container,
   Title,
@@ -16,6 +18,12 @@ import Logo1 from "../../assets/logo-dev-performance.png";
 import Beam1 from "../../assets/viga.png";
 
 function App() {
+  const navigate = useNavigate();
+
+function GoToHealth(){
+  navigate("/Saude");
+}
+
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
@@ -30,7 +38,7 @@ function App() {
       <ContainerItens>
 
         <CornerstoneContainer>
-          <Cornerstone></Cornerstone>
+          <Cornerstone onClick={GoToHealth}></Cornerstone>
           <CornestoneTitle>Saúde</CornestoneTitle>
           <ProgressExt>
             <ProgressInt></ProgressInt>
