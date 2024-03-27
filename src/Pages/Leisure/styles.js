@@ -5,7 +5,7 @@ export const ContainerPrincipal = styled.div`
   background: url("${BackgroundFundo}");
   background-size: cover;
   //height: 100vh;
-  height: 100%;
+  height: 100%;;
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
@@ -13,17 +13,12 @@ export const ContainerPrincipal = styled.div`
  `;
 
 export const Logo = styled.img`
- width: 200px;
-  margin-bottom: 100px;
-  position: absolute;
-  left: 20px;
-  top: 20px;
+width: 200px;
 `;
 
 export const ContainerItensPrincipal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 3%;
   //background: #000;
   z-index: 1;
 ` 
@@ -37,10 +32,9 @@ export const ContainerItens = styled.div`
   );
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  width: 330px;
+  width: 280px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 15px;
 `;
 
@@ -63,7 +57,7 @@ export const ListaCard = styled.ol`
 `
 
 export const Button = styled.button`
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 15px 0;
   border: none;
   background-color: #ea4d2a;
@@ -90,14 +84,14 @@ export const ContainerCitation = styled.div`
 `
 
 export const Citation = styled.p`
-  font-family: "Special Elite", system-ui;
   color: #2c2b2b;
   font-weight: 600;
   font-size: 18px;
   width: 55%;
 `;
 
-export const ImgSaude = styled.img`
-  height: 250px;
-  
+export const ImgLazer = styled.img`
+  weight: 315px;
+  height: 315px;
+  right: 0;
 `

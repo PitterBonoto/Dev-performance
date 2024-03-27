@@ -26,6 +26,10 @@ function GoToStudies(){
   navigate("/Estudos");
 }
 
+function GoToLeisure(){
+  navigate("/Lazer");
+}
+
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
@@ -52,7 +56,7 @@ function GoToStudies(){
         </CornerstoneContainer>
 
         <CornerstoneContainer>
-          <Cornerstone></Cornerstone>
+          <Cornerstone onClick={GoToLeisure}></Cornerstone>
           <CornestoneTitle>Pessoal</CornestoneTitle>
           <ProgressExt>
             <ProgressInt></ProgressInt>
