@@ -26,7 +26,7 @@ export const Title = styled.h1`
   font-family: "Special Elite", system-ui;
   font-weight: 400;
   font-size: 40px;
-  margin-top: 13.5vh;
+  margin-top: 12vh;
 `;
 
 export const Roof = styled.div`

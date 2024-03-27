@@ -4,24 +4,27 @@ import BackgroundFundo from "../../assets/background-3.png";
 export const ContainerPrincipal = styled.div`
   background: url("${BackgroundFundo}");
   background-size: cover;
-  //height: 100vh;
-  height: 100%;;
+  height: 100vh;
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
- `;
+`;
 
 export const Logo = styled.img`
-width: 200px;
+  width: 200px;
+  margin-bottom: 100px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
 `;
 
 export const ContainerItensPrincipal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  //background: #000;
+  margin-top: 5%;
   z-index: 1;
-` 
+`;
 
 export const ContainerItens = styled.div`
   background: linear-gradient(
@@ -32,9 +35,10 @@ export const ContainerItens = styled.div`
   );
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  width: 280px;
+  width: 350px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 15px;
 `;
 
@@ -43,7 +47,7 @@ export const TitleCard = styled.p`
   font-weight: 600;
   font-size: 17px;
   text-align: center;
-`
+`;
 
 export const ListaCard = styled.ol`
   color: #000000;
@@ -51,10 +55,10 @@ export const ListaCard = styled.ol`
   font-size: 14px;
   text-align: center;
   padding: 15px;
-  li{
+  li {
     text-align: left;
   }
-`
+`;
 
 export const Button = styled.button`
   border-radius: 15px;
@@ -73,25 +77,23 @@ export const Button = styled.button`
   &:active {
     opacity: 0.4;
   }
-`
+`;
 
 export const ContainerCitation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: -17% ;
-  //background: #ea4d2a;
-`
+  margin-top: -17%;
+`;
 
 export const Citation = styled.p`
+font-family: "Special Elite", system-ui;
   color: #2c2b2b;
   font-weight: 600;
   font-size: 18px;
-  width: 55%;
+  width: 65%;
 `;
 
 export const ImgLazer = styled.img`
-  weight: 315px;
-  height: 315px;
-  right: 0;
-`
+  height: 250px;
+`;

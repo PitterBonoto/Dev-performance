@@ -4,8 +4,7 @@ import BackgroundFundo from "../../assets/background-3.png";
 export const ContainerPrincipal = styled.div`
   background: url("${BackgroundFundo}");
   background-size: cover;
-  //height: 100vh;
-  height: 100%;
+  height: 100vh;
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
@@ -23,7 +22,7 @@ export const Logo = styled.img`
 export const ContainerItensPrincipal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-top: 3%;
+  margin-top: 5%;
   //background: #000;
   z-index: 1;
 ` 
@@ -37,7 +36,7 @@ export const ContainerItens = styled.div`
   );
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  width: 330px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,7 +93,7 @@ export const Citation = styled.p`
   color: #2c2b2b;
   font-weight: 600;
   font-size: 18px;
-  width: 55%;
+  width: 65%;
 `;
 
 export const ImgSaude = styled.img`
