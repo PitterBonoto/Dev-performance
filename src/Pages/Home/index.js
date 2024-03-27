@@ -5,7 +5,6 @@ import {
   Container,
   Title,
   Logo,
-  Beam,
   Roof,
   ContainerItens,
   CornerstoneContainer,
@@ -15,28 +14,23 @@ import {
   ProgressInt,
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
-import Beam1 from "../../assets/viga.png";
 
 function App() {
   const navigate = useNavigate();
 
-function GoToHealth(){
-  navigate("/Saude");
-}
+  function GoToHealth() {
+    navigate("/Saude");
+  }
 
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
       <Title>Os pilares da Produtividade:</Title>
       <Roof>
-      <p>SUCESSO</p>
+        <p>SUCESSO</p>
       </Roof>
-      <Beam alt="viga" src={Beam1}/>
-      
-
 
       <ContainerItens>
-
         <CornerstoneContainer>
           <Cornerstone onClick={GoToHealth}></Cornerstone>
           <CornestoneTitle>Saúde</CornestoneTitle>
@@ -60,7 +54,6 @@ function GoToHealth(){
             <ProgressInt></ProgressInt>
           </ProgressExt>
         </CornerstoneContainer>
-
       </ContainerItens>
     </Container>
   );

@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import Background2 from "../../assets/background-3.png";
+import Background3 from "../../assets/background-3.png";
 import BackgroundRoof from "../../assets/telhado.png";
 import CornestoneImg from "../../assets/pilar.png";
+import CornestoneImg1 from "../../assets/pilar1.png";
 
 export const Container = styled.div`
-  background: url("${Background2}");
+  background: url("${Background3}");
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -31,25 +32,24 @@ export const Title = styled.h1`
 export const Roof = styled.div`
   background: url("${BackgroundRoof}");
   background-size: 100% 100%;
-  width: 630px;
-  height: 110px;
+  width: 720px;
+  height: 150px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin: 20px 0 5px 0;
   
+
 
   & p {
     font-family: "Special Elite", system-ui;
     font-size: 35px;
     font-weight: 700;
-    margin-top: 4%;
+    margin-top: 15px;
+    text-shadow: 1px 1px 5px #000000;
   }
 `;
-
-export const Beam = styled.img`
-  height: 82px;
-  `
 
 export const ContainerItens = styled.div`
   display: flex;
@@ -66,27 +66,33 @@ export const CornerstoneContainer = styled.div`
 export const Cornerstone = styled.button`
   background: url("${CornestoneImg}");
   background-size: 100% 100%;
-  width: 80%;
-  height: 200px;
+  height: 230px;
+  width: 100px;
+
   border: none;
   cursor: pointer;
 
   &:hover {
-    width: 85%;
-    height: 208px;
-    margin-top: -8px;
-    transition: 0.5s;
+    background: url("${CornestoneImg1}");
+    background-size: 100% 100%;
+    height: 235px;
+    width: 102.5px;
+    margin-top: -5px;
+    transition: 1s;
   }
 
   &:active {
-    opacity: 0.4;
+    background: url("${CornestoneImg1}");
+    background-size: 100% 100%;
+    opacity: 0.6;
+    transition: 0.5s;
   }
 `;
 
 export const CornestoneTitle = styled.h2`
   font-family: "Special Elite", system-ui;
-  font-size: 30px;
-  margin: 2px 0;
+  font-size: 25px;
+  margin: 5px 0;
 `;
 
 export const ProgressExt = styled.div`

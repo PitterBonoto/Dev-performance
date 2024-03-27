@@ -6,6 +6,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Health from "./Pages/Health";
 
+
 function MyRoutes() {
     return (
         <Router>
@@ -14,7 +15,7 @@ function MyRoutes() {
                 <Route path="/Home" element = {<Home/>} />
                 <Route path="/Cadastrar" element = {<Register/>} />
                 <Route path="/Saude" element = {<Health/>}/>
-            </Routes>
+                </Routes>
         </Router>
     );
 }
