@@ -15,7 +15,7 @@ import {
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
 
-function Saude() {
+function Health() {
   return (
     <ContainerPrincipal>
       <Logo alt="Logo" src={LogoImg} />
@@ -65,4 +65,4 @@ function Saude() {
   );
 }
 
-export default Saude;
+export default Health;
