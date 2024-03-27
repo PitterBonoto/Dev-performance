@@ -4,7 +4,8 @@ import BackgroundFundo from "../../assets/background-3.png";
 export const ContainerPrincipal = styled.div`
   background: url("${BackgroundFundo}");
   background-size: cover;
-  height: 100vh;
+  //height: 100vh;
+  height: 100%;
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
