@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router"; 
 
 import {
   Container,
@@ -20,14 +20,9 @@ import Logo1 from "../../assets/logo-dev-performance.png";
 function App() {
   const navigate = useNavigate();
 
-  //------------------------Entrar na Home------------------------------
-  function ToEnter() {
-    navigate("/Home");
-  }
-
-  //------------------------Entrar em Cadastrar-------------------------
-  function ToEnterRegister() {
-    navigate("/Cadastrar");
+  //-----------------------------Cadastrar----------------------------------
+  function ToRegister() {
+    navigate("/");
   }
 
   return (
@@ -43,16 +38,18 @@ function App() {
       </Welcome>
 
       <ContainerItens>
-        <Title>Login</Title>
+        <Title>Cadastre-se</Title>
 
-        <InputLabel>Usuário</InputLabel>
-        <Input placeholder="Usuário" />
+        <InputLabel>E-mail</InputLabel>
+        <Input placeholder="E-mail" />
 
         <InputLabel>Senha</InputLabel>
         <Input placeholder="Senha" />
 
-        <Button onClick={ToEnter}>Entrar</Button>
-        <Register onClick={ToEnterRegister}>Cadastre-se</Register>
+        <InputLabel>Confirmar Senha</InputLabel>
+        <Input placeholder="Confirmar Senha" />
+
+        <Button onClick={ToRegister}>Cadastrar</Button>
       </ContainerItens>
     </Container>
   );
