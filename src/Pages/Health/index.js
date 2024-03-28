@@ -67,8 +67,8 @@ function Health() {
         </ContainerItens>
 
         <ContainerItensToDoList>
-          <Tnhas TaritleCard>Miefas</Tnhas>
-          <LabelTodo>Qual a tarefa</LabelTodo>
+          <TitleCard>Minhas Tarefas</TitleCard>
+          <LabelTodo>Criar tarefa</LabelTodo>
           
           <ContainerTodoListItens>
             <Input placeholder="digite a tarefa" onChange={ (e) => setTask( e.target.value ) } ></Input>
