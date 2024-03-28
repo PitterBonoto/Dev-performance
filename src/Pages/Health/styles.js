@@ -171,6 +171,26 @@ export const ButtonTodo = styled.button`
 export const ContainerTodoListItens = styled.div`
   display: flex;
   //flex-direction: column;
-  //gap: 20px;
   justify-content: flex-start;
+  border-bottom: 1px solid rgb(230, 230, 230) ;
+  padding-bottom: 1rem;
+`
+
+export const TaskContainer = styled.div `
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const CheckTitle = styled.div `
+  display: flex;
+  align-items: center;
+`
+
+export const CheckBoxContainer = styled.label`
+  position: relative;
+  //padding-left: 35px;
+  display: flex;
+  gap: 5px; 
 `
