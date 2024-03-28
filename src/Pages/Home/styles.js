@@ -20,6 +20,7 @@ export const Logo = styled.img`
   position: absolute;
   left: 20px;
   top: 20px;
+  filter: drop-shadow(1px 1px 5px #000000);
 `;
 
 export const Title = styled.h1`
@@ -34,6 +35,7 @@ export const Roof = styled.div`
   background-size: 100% 100%;
   width: 720px;
   height: 150px;
+  filter: drop-shadow(1px 1px 3px #000000);
   
   display: flex;
   align-items: center;
@@ -68,6 +70,7 @@ export const Cornerstone = styled.button`
   background-size: 100% 100%;
   height: 230px;
   width: 100px;
+  filter: drop-shadow(1px 1px 3px #000000);
 
   border: none;
   cursor: pointer;
@@ -79,6 +82,7 @@ export const Cornerstone = styled.button`
     width: 102.5px;
     margin-top: -5px;
     transition: 1s;
+    filter: drop-shadow(1px 1px 6px #000000);
   }
 
   &:active {

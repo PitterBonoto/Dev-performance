@@ -17,6 +17,7 @@ export const Logo = styled.img`
   position: absolute;
   left: 20px;
   top: 20px;
+  filter: drop-shadow(1px 1px 5px #000000);
 `;
 
 export const ContainerItensPrincipal = styled.div`
