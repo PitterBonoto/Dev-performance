@@ -10,6 +10,8 @@ import {
   Citation,
   ContainerCitation,
   ImgSaude,
+  ContainerItensToDoList,
+  Input,
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
@@ -53,6 +55,38 @@ function Health() {
           </ListaCard>
           <Button>Motive-se</Button>
         </ContainerItens>
+
+        <ContainerItensToDoList>
+          <TitleCard>Minhas Tarefas</TitleCard>
+          <label style={{ marginBottom: "-13px" }} >Qual a tarefa</label>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Input style={{ height: "40px", width: "80%", marginRight: "10px" }} ></Input>
+            <Button style={{ height: "40px" , width: "20%"   }}  >Nova Tarefa</Button>
+          //mexer nessa parte para o todolist
+          </div>
+            <div >
+              <input type="checkbox" />
+              <label> - Item 1</label>
+            </div>
+            <div>
+              <input type="checkbox" checked/>
+              <label> - Item 2</label>
+            </div>
+            <div>
+              <input type="checkbox" checked/>
+              <label> - Item 2</label>
+            </div>
+            <div>
+              <input type="checkbox" checked/>
+              <label> - Item 2</label>
+            </div>
+
+        </ContainerItensToDoList>
       </ContainerItensPrincipal>
       <ContainerCitation>
         <Citation>

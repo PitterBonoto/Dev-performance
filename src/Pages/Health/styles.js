@@ -41,6 +41,7 @@ export const ContainerItens = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 15px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
 export const TitleCard = styled.p`
@@ -97,6 +98,39 @@ export const Citation = styled.p`
 `;
 
 export const ImgSaude = styled.img`
-  height: 250px;
-  
+  height: 250px; 
 `
+
+export const ContainerItensToDoList = styled.div`
+  background: linear-gradient(
+    157deg,
+    rgba(255, 255, 255, 0) 0.2%,
+    rgba(255, 255, 255, 0) 0.5%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  backdrop-filter: blur(2px);
+  border-radius: 15px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 15px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+`;
+
+export const Input = styled.input`
+  padding: 10px 20px;
+  width: 100%;
+  height: 45px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  outline: none;
+  margin-bottom: 25px;
+
+  color: #ea4d2a;
+  font-size: 16px;
+  font-weight: 400;
+`;
