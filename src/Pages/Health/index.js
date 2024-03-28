@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import {
   ContainerPrincipal,
   Logo,
@@ -15,13 +15,19 @@ import {
   ButtonTodo,
   LabelTodo,
   ContainerTodoListItens,
-
+  TaskContainer,
+  CheckTitle,
+  CheckBoxContainer,
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
 
 function Health() {
+
+  const [task, setTask] = useState(null);
+  const [todos, setTodos] = useState([])
+
   return (
     <ContainerPrincipal>
       <Logo alt="Logo" src={LogoImg} />
@@ -61,29 +67,32 @@ function Health() {
         </ContainerItens>
 
         <ContainerItensToDoList>
-          <TitleCard>Minhas Tarefas</TitleCard>
+          <Tnhas TaritleCard>Miefas</Tnhas>
           <LabelTodo>Qual a tarefa</LabelTodo>
           
           <ContainerTodoListItens>
-            <Input></Input>
-            <ButtonTodo>Nova Tarefa</ButtonTodo>
+            <Input placeholder="digite a tarefa" onChange={ (e) => setTask( e.target.value ) } ></Input>
+            <ButtonTodo onClick={ () => console.log(task) } >Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
-            <div >
-              <input type="checkbox" />
-              <label> - Item 1</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label> - Item 2</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label> - Item 2</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label> - Item 2</label>
-            </div>
+            
+            <TaskContainer>
+              { todos.map( (todo) => ( 
+                console.log("ok")
+               ) ) }
+              <CheckTitle> 
+                <CheckBoxContainer>
+                  <input type="checkbox" className="checkbox-container" />
+                  <span className="check-mark" ></span>
+                  <p>Criar Qualquer Coisa</p>
+                </CheckBoxContainer>
+
+
+
+              </CheckTitle>
+            </TaskContainer>
+
+
+
 
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
