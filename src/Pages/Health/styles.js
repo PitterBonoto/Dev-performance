@@ -9,10 +9,10 @@ export const ContainerPrincipal = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
- `;
+`;
 
 export const Logo = styled.img`
- width: 200px;
+  width: 200px;
   margin-bottom: 100px;
   position: absolute;
   left: 20px;
@@ -26,7 +26,7 @@ export const ContainerItensPrincipal = styled.div`
   margin-top: 5%;
   //background: #000;
   z-index: 1;
-` 
+`;
 
 export const ContainerItens = styled.div`
   background: linear-gradient(
@@ -50,7 +50,7 @@ export const TitleCard = styled.p`
   font-weight: 600;
   font-size: 17px;
   text-align: center;
-`
+`;
 
 export const ListaCard = styled.ol`
   color: #000000;
@@ -58,10 +58,10 @@ export const ListaCard = styled.ol`
   font-size: 14px;
   text-align: center;
   padding: 15px;
-  li{
+  li {
     text-align: left;
   }
-`
+`;
 
 export const Button = styled.button`
   border-radius: 10px;
@@ -80,15 +80,15 @@ export const Button = styled.button`
   &:active {
     opacity: 0.4;
   }
-`
+`;
 
 export const ContainerCitation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: -17% ;
+  margin-top: -17%;
   //background: #ea4d2a;
-`
+`;
 
 export const Citation = styled.p`
   font-family: "Special Elite", system-ui;
@@ -99,9 +99,10 @@ export const Citation = styled.p`
 `;
 
 export const ImgSaude = styled.img`
-  height: 250px; 
-`
+  height: 250px;
+`;
 
+/* estilização da minha todo list */
 export const ContainerItensToDoList = styled.div`
   background: linear-gradient(
     157deg,
@@ -127,7 +128,7 @@ export const LabelTodo = styled.label`
   letter-spacing: -0.408px;
   margin-left: 5px;
   margin-bottom: -13px;
-`
+`;
 
 export const Input = styled.input`
   padding: 10px 20px;
@@ -140,7 +141,7 @@ export const Input = styled.input`
   outline: none;
   //margin-bottom: 25px;
 
-  color: #ea4d2a;
+  //color: #ea4d2a;
   font-size: 16px;
   font-weight: 400;
   height: 40px;
@@ -150,7 +151,7 @@ export const Input = styled.input`
 
 export const ButtonTodo = styled.button`
   border-radius: 10px;
-  padding: 15px 0;
+  padding: 10px 0;
   border: none;
   background-color: #ea4d2a;
   color: #fff;
@@ -167,31 +168,40 @@ export const ButtonTodo = styled.button`
   &:active {
     opacity: 0.4;
   }
-`
+`;
 
 export const ContainerTodoListItens = styled.div`
   display: flex;
   //flex-direction: column;
   justify-content: flex-start;
-  border-bottom: 1px solid rgb(230, 230, 230) ;
+  border-bottom: 1px solid rgba(234, 77, 42, 1);
   padding-bottom: 1rem;
-`
+`;
 
-export const TaskContainer = styled.div `
-  margin-top: 1rem;
+export const TaskContainer = styled.div`
+  //margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
-export const CheckTitle = styled.div `
+export const CheckTitle = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const CheckBoxContainer = styled.label`
   position: relative;
   //padding-left: 35px;
   display: flex;
-  gap: 5px; 
-`
+  gap: 5px;
+
+  p:hover {
+    color: blue;
+  }
+`;
+
+export const InputCheck = styled.input`
+  width: 18px;
+  height: 18px;
+`;

@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import {
   ContainerPrincipal,
   Logo,
@@ -18,18 +18,51 @@ import {
   TaskContainer,
   CheckTitle,
   CheckBoxContainer,
+  InputCheck,
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Health() {
+  //const [complete, setComplete] = useState("");
+  const [task, setTask] = useState("");
+  const [tasks, setTasks] = useState([]);
 
-  const [task, setTask] = useState(null);
-  const [todos, setTodos] = useState([])
+  function handleCreateTask() {
+    if (task === "") {
+      toast.error("Você precisa digitar pelo menos uma tarefa");
+    } else {
+      const n1 = 987654321;
+
+      const idRandon = (num) => Math.floor(Math.random() * num);
+
+      const newTask = { id: idRandon(n1), title: task, isComplete: false };
+
+      //console.log(newTask);
+      setTasks([...tasks, newTask]);
+
+      setTask("");
+    }
+  }
+
+  function handleTaksCompletation(id) {
+    const taskComplete = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, isComplete: !task.isComplete };
+      }
+      return task;
+    });
+
+    setTasks(taskComplete);
+  }
 
   return (
     <ContainerPrincipal>
+      <ToastContainer />
+
       <Logo alt="Logo" src={LogoImg} />
       <ContainerItensPrincipal>
         <ContainerItens>
@@ -69,33 +102,34 @@ function Health() {
         <ContainerItensToDoList>
           <TitleCard>Minhas Tarefas</TitleCard>
           <LabelTodo>Criar tarefa</LabelTodo>
-          
+
           <ContainerTodoListItens>
-            <Input placeholder="digite a tarefa" onChange={ (e) => setTask( e.target.value ) } ></Input>
-            <ButtonTodo onClick={ () => console.log(task) } >Nova Tarefa</ButtonTodo>
+            <Input
+              placeholder="digite a tarefa"
+              value={task}
+              onChange={(ev) => setTask(ev.target.value)}
+            />
+
+            <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
-            
-            <TaskContainer>
-              { todos.map( (todo) => ( 
-                console.log("ok")
-               ) ) }
-              <CheckTitle> 
+
+          {tasks.map((task) => (
+            <TaskContainer key={task.id}>
+              <CheckTitle>
                 <CheckBoxContainer>
-                  <input type="checkbox" className="checkbox-container" />
-                  <span className="check-mark" ></span>
-                  <p>Criar Qualquer Coisa</p>
+                  <InputCheck
+                    type="checkbox"
+                    onclick={() => handleTaksCompletation(task.id)}
+                  />
+
+                  <p>{task.title}</p>
                 </CheckBoxContainer>
-
-
-
               </CheckTitle>
             </TaskContainer>
-
-
-
-
+          ))}
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
+
       <ContainerCitation>
         <Citation>
           "Amanhã vou ter orgulho da minha versão de hoje: uma pessoa guerreira
