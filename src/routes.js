@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
-import Health from "./Pages/Health";
+import { Health } from "./Pages/Health";
 import Studies from "./Pages/Studies";
 import Leisure from "./Pages/Leisure";
 
