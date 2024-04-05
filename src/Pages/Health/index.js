@@ -37,19 +37,14 @@ function Health() {
 
   function handleCreateTask() {
     if (task === "") {
-      toast.error("Você precisa digitar pelo menos uma tarefa");
+      toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
       const n1 = 987654321;
-
       const idRandon = (num) => Math.floor(Math.random() * num);
-
       const newTask = { id: idRandon(n1), title: task, isComplete: false };
-
       //console.log(newTask);
       setTasks([...tasks, newTask]);
-
-      console.log(newTask);
-
+      //console.log(newTask);
       setTask("");
     }
   }
@@ -62,11 +57,27 @@ function Health() {
       return task;
     });
 
+    let validIsComplete = taskComplete.find(
+      (item) =>
+        item.isComplete === true &&
+        toast.success(
+          "😎 Você foi muito bem, concluiu sua tarefa, continue assim 😎 !!!"
+        )
+    );
+
+    //console.log(taskComplete);
     setTasks(taskComplete);
   }
 
-  function handleCompleteTask() {
-    alert("apagar task");
+  function handleTaksDelete(id) {
+    //alert("apagar task");
+    if (task.id === "") {
+      toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
+    } else {
+      const taskDelete = tasks.filter((task) => task.id !== id);
+      setTasks(taskDelete);
+      toast.success("Sua tarefa foi excluida");
+    }
   }
 
   return (
@@ -137,7 +148,7 @@ function Health() {
                 </CheckBoxContainer>
                 <TrashStyle>
                   <Trash2
-                    onClick={handleCompleteTask}
+                    onClick={() => handleTaksDelete(task.id)}
                     style={{ color: " #ff0000" }}
                   />
                 </TrashStyle>
