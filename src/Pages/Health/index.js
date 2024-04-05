@@ -76,7 +76,7 @@ function Health() {
     } else {
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
-      toast.success("Sua tarefa foi excluida");
+      toast.success("😁 Sua tarefa foi excluida 😁.");
     }
   }
 
