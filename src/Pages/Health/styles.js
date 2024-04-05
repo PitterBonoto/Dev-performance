@@ -179,29 +179,59 @@ export const ContainerTodoListItens = styled.div`
 `;
 
 export const TaskContainer = styled.div`
-  //margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  p:hover {
+    color: #ea4d2a;
+  }
+`;
+
+export const taskContainerComplete = styled.div`
+  p {
+    text-decoration: line-through;
+  }
 `;
 
 export const CheckTitle = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
 `;
 
 export const CheckBoxContainer = styled.label`
   position: relative;
-  //padding-left: 35px;
+  padding: 5px;
   display: flex;
+  width: 100%;
+  align-items: center;
   gap: 5px;
+  //background: #adedef;
+  margin-top: -12px;
+`;
 
-  p:hover {
-    color: blue;
-  }
+export const P = styled.p`
+  ${(props) => props.isTaskCompleted && `text-decoration: line-through;`}
 `;
 
 export const InputCheck = styled.input`
   width: 18px;
   height: 18px;
+`;
+
+export const TrashStyle = styled.button`
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: -10px;
+  //background: #adedef;
+
+  &:hover {
+    //background-size: 100% 100%;
+    background: transparent;
+    scale: 1.5;
+    transition: 1s;
+    filter: drop-shadow(1px 1px 6px #000000);
+  }
 `;

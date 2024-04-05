@@ -19,15 +19,19 @@ import {
   CheckTitle,
   CheckBoxContainer,
   InputCheck,
+  TrashStyle,
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Trash2 } from "lucide-react";
+
+import { Paragraph } from "../../components/P";
 
 function Health() {
-  //const [complete, setComplete] = useState("");
+  const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -44,6 +48,8 @@ function Health() {
       //console.log(newTask);
       setTasks([...tasks, newTask]);
 
+      console.log(newTask);
+
       setTask("");
     }
   }
@@ -57,6 +63,10 @@ function Health() {
     });
 
     setTasks(taskComplete);
+  }
+
+  function handleCompleteTask() {
+    alert("apagar task");
   }
 
   return (
@@ -119,11 +129,18 @@ function Health() {
                 <CheckBoxContainer>
                   <InputCheck
                     type="checkbox"
-                    onclick={() => handleTaksCompletation(task.id)}
+                    onClick={() => handleTaksCompletation(task.id)}
                   />
-
-                  <p>{task.title}</p>
+                  <Paragraph isTaskCompleted={task.isComplete}>
+                    {task.title}
+                  </Paragraph>
                 </CheckBoxContainer>
+                <TrashStyle>
+                  <Trash2
+                    onClick={handleCompleteTask}
+                    style={{ color: " #ff0000" }}
+                  />
+                </TrashStyle>
               </CheckTitle>
             </TaskContainer>
           ))}
