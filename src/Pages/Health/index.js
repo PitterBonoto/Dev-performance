@@ -1,4 +1,6 @@
 import React, { Children, useState } from "react";
+import { useNavigate } from "react-router";
+
 import {
   ContainerPrincipal,
   Logo,
@@ -85,28 +87,30 @@ function Health() {
     }
   }
 
-  
   function progressBar() {
     const tasksTrue = tasks.filter((task) => {
       if (task.isComplete === true) {
         return task;
       }
-    })
+    });
 
     const percentageComplete = (tasksTrue.length / tasks.length) * 100;
-    return percentageComplete
+    return percentageComplete;
   }
 
   progressBar();
 
-  
+  const navigate = useNavigate();
 
+  function GoToHome() {
+    navigate("/Home");
+  }
 
   return (
     <ContainerPrincipal>
       <ToastContainer />
 
-      <Logo alt="Logo" src={LogoImg} />
+      <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
       <ContainerItensPrincipal>
         <ContainerItens>
           <TitleCard>Melhore Seu Sono</TitleCard>

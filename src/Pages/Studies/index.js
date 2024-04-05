@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 import {
   ContainerPrincipal,
@@ -82,10 +83,16 @@ function Studies() {
     }
   }
 
+  const navigate = useNavigate();
+
+  function GoToHome() {
+    navigate("/Home");
+  }
+
   return (
     <ContainerPrincipal>
       <ToastContainer />
-      <Logo alt="Logo" src={LogoImg} />
+      <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
       <ContainerItensPrincipal>
         <ContainerItens>
           <TitleCard>Deixe de lado a procrastinação</TitleCard>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
+
 import {
   ContainerPrincipal,
   Logo,
@@ -80,10 +82,17 @@ function Leisure() {
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
   }
+
+  const navigate = useNavigate();
+
+  function GoToHome() {
+    navigate("/Home");
+  }
+
   return (
     <ContainerPrincipal>
       <ToastContainer />
-      <Logo alt="Logo" src={LogoImg} />
+      <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
       <ContainerItensPrincipal>
         <ContainerItens>
           <TitleCard>Descanse o corpo e a mente</TitleCard>
