@@ -36,13 +36,11 @@ export const Roof = styled.div`
   width: 720px;
   height: 150px;
   filter: drop-shadow(1px 1px 3px #000000);
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 20px 0 5px 0;
-  
-
 
   & p {
     font-family: "Special Elite", system-ui;
@@ -99,12 +97,13 @@ export const CornestoneTitle = styled.h2`
   margin: 5px 0;
 `;
 
-export const ProgressExt = styled.div`
+export const ProgressExt = styled.button`
   background-color: #ffffff;
   width: 70%;
   height: 25px;
   border-radius: 5px;
   box-shadow: 2px 2px 5px #000000;
+  //border: none;
 `;
 
 export const ProgressInt = styled.div`

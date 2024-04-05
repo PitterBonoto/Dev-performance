@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
+import { PercProgress } from "../../components/PercProgress";
+
 import {
   Container,
   Title,
@@ -15,6 +17,8 @@ import {
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
 
+//import { PercProgress } from "../../components/PercProgress";
+
 function App() {
   const navigate = useNavigate();
 
@@ -22,14 +26,18 @@ function App() {
     navigate("/Saude");
   }
 
-function GoToStudies(){
-  navigate("/Estudos");
-}
+  function GoToStudies() {
+    navigate("/Estudos");
+  }
 
-function GoToLeisure(){
-  navigate("/Lazer");
-}
+  function GoToLeisure() {
+    navigate("/Lazer");
+  }
 
+  function teste() {
+    alert("sera que foi");
+    //console.log(progressBar());
+  }
 
   return (
     <Container>
@@ -60,7 +68,8 @@ function GoToLeisure(){
           <Cornerstone onClick={GoToLeisure}></Cornerstone>
           <CornestoneTitle>Pessoal</CornestoneTitle>
           <ProgressExt>
-            <ProgressInt></ProgressInt>
+            <PercProgress />
+            <ProgressInt />
           </ProgressExt>
         </CornerstoneContainer>
       </ContainerItens>

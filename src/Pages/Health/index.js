@@ -1,4 +1,6 @@
 import React, { Children, useState } from "react";
+import { useNavigate } from "react-router";
+
 import {
   ContainerPrincipal,
   Logo,
@@ -24,13 +26,16 @@ import {
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
+
+/* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Trash2 } from "lucide-react";
 
 import { Paragraph } from "../../components/P";
+import { PercProgress } from "../../components/PercProgress";
 
-function Health() {
+export function Health() {
   const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
@@ -83,28 +88,31 @@ function Health() {
     }
   }
 
-  
   function progressBar() {
     const tasksTrue = tasks.filter((task) => {
       if (task.isComplete === true) {
         return task;
       }
-    })
+    });
 
     const percentageComplete = (tasksTrue.length / tasks.length) * 100;
-    return percentageComplete
+    return percentageComplete.toFixed(2);
   }
 
-  progressBar();
+  const barStatus = progressBar();
+  //console.log(progressBar());
 
-  
+  const navigate = useNavigate();
 
+  function GoToHome() {
+    navigate("/Home");
+  }
 
   return (
     <ContainerPrincipal>
       <ToastContainer />
 
-      <Logo alt="Logo" src={LogoImg} />
+      <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
       <ContainerItensPrincipal>
         <ContainerItens>
           <TitleCard>Melhore Seu Sono</TitleCard>
@@ -142,7 +150,6 @@ function Health() {
 
         <ContainerItensToDoList>
           <TitleCard>Minhas Tarefas</TitleCard>
-          <p>{}</p>
           <LabelTodo>Criar tarefa</LabelTodo>
 
           <ContainerTodoListItens>
@@ -151,7 +158,7 @@ function Health() {
               value={task}
               onChange={(ev) => setTask(ev.target.value)}
             />
-
+            <PercProgress percBar={barStatus}></PercProgress>
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
 
@@ -190,4 +197,4 @@ function Health() {
   );
 }
 
-export default Health;
+//export default Health;
