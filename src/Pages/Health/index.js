@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import {
   ContainerPrincipal,
   Logo,
@@ -36,6 +36,7 @@ function Health() {
   const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
+  //const [percentageComplete, setPercentageComplete] = useState();
 
   function handleCreateTask() {
     if (task === "") {
@@ -46,7 +47,9 @@ function Health() {
       const newTask = { id: idRandon(n1), title: task, isComplete: false };
       //console.log(newTask);
       setTasks([...tasks, newTask]);
-      //console.log(newTask);
+
+      console.log(newTask);
+
       setTask("");
     }
   }
@@ -81,6 +84,23 @@ function Health() {
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
   }
+
+  
+  function progressBar() {
+    const tasksTrue = tasks.filter((task) => {
+      if (task.isComplete === true) {
+        return task;
+      }
+    })
+
+    const percentageComplete = (tasksTrue.length / tasks.length) * 100;
+    return percentageComplete
+  }
+
+  progressBar();
+
+  
+
 
   return (
     <ContainerPrincipal>
@@ -124,6 +144,7 @@ function Health() {
 
         <ContainerItensToDoList>
           <TitleCard>Minhas Tarefas</TitleCard>
+          <p>{}</p>
           <LabelTodo>Criar tarefa</LabelTodo>
 
           <ContainerTodoListItens>

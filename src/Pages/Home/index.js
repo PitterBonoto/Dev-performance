@@ -30,6 +30,7 @@ function GoToLeisure(){
   navigate("/Lazer");
 }
 
+
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
