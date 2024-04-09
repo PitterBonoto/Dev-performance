@@ -39,10 +39,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { Trash2 } from "lucide-react";
 
 import { Paragraph } from "../../components/P";
-import { PercProgress } from "../../components/PercProgress";
 
-export function Health() {
-  const [complete, setComplete] = useState(false);
+function Health() {
+  //const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -115,7 +114,7 @@ export function Health() {
     });
 
     const percentageComplete = (tasksTrue.length / tasks.length) * 100;
-    return percentageComplete.toFixed(2);
+    return percentageComplete.toFixed(0);
   }
 
   const barStatus = progressBar();
@@ -199,9 +198,8 @@ export function Health() {
             <Input
               placeholder="digite a tarefa"
               value={task}
-              onChange={(ev) => setTask("teste")}
+              onChange={(ev) => setTask(ev.target.value)}
             />
-            <PercProgress percBar={barStatus}></PercProgress>
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
           {tasks.map((task) => (
@@ -239,4 +237,4 @@ export function Health() {
   );
 }
 
-//export default Health;
+export default Health;

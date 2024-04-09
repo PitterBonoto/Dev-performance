@@ -34,7 +34,7 @@ import { Trash2 } from "lucide-react";
 import { Paragraph } from "../../components/P";
 
 function Studies() {
-  const [complete, setComplete] = useState(false);
+  //const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
