@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, createContext } from "react";
 import { useNavigate } from "react-router";
 
 import { PercProgress } from "../../components/PercProgress";
@@ -17,8 +17,6 @@ import {
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
 
-//import { PercProgress } from "../../components/PercProgress";
-
 function App() {
   const navigate = useNavigate();
 
@@ -36,13 +34,13 @@ function App() {
 
   function teste() {
     alert("sera que foi");
-    //console.log(progressBar());
   }
 
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
       <Title>Os pilares da Produtividade:</Title>
+      <PercProgress>valor: </PercProgress>
       <Roof>
         <p>SUCESSO</p>
       </Roof>
@@ -67,8 +65,7 @@ function App() {
         <CornerstoneContainer>
           <Cornerstone onClick={GoToLeisure}></Cornerstone>
           <CornestoneTitle>Pessoal</CornestoneTitle>
-          <ProgressExt>
-            <PercProgress />
+          <ProgressExt onClick={teste}>
             <ProgressInt />
           </ProgressExt>
         </CornerstoneContainer>

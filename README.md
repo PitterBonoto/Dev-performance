@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Novas alterações para poder baixar no projeto
+
+### instalar o axios
+
+    -> yarn add axios
+    -> utilizar essa forma de import onde for usar ==> import axios from "axios";
+
+### instalar o uuid
+
+    -> yarn add uuid
+    -> utilizar essa forma de import onde for usar ==> import { v4 } from "uuid";

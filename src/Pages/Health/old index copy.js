@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
-import { v4 } from "uuid";
 
 import {
   ContainerPrincipal,
@@ -40,33 +38,27 @@ import { PercProgress } from "../../components/PercProgress";
 export function Health() {
   const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([
+    { id: 692568869, title: "tareta 1", isComplete: true },
+    { id: 692568863, title: "tarefa 2", isComplete: false },
+    { id: 692568861, title: "tarefa 3", isComplete: false },
+  ]);
 
   const [percentageComplete, setPercentageComplete] = useState("");
 
-  async function handleCreateTask() {
-    const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
-      id: v4(),
-      title: task,
-      isComplete: false,
-    });
+  function handleCreateTask() {
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
+      const n1 = 987654321;
+      const idRandon = (num) => Math.floor(Math.random() * num);
+      const newTask = { id: idRandon(n1), title: task, isComplete: false };
       //console.log(newTask);
       setTasks([...tasks, newTask]);
+      //console.log(newTask);
       setTask("");
     }
   }
-
-  useEffect(() => {
-    async function fetchTasks() {
-      const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-      //console.log(data);
-      setTasks(newTask);
-    }
-    fetchTasks();
-  }, []);
 
   function handleTaksCompletation(id) {
     const taskComplete = tasks.map((task) => {
@@ -88,12 +80,11 @@ export function Health() {
     setTasks(taskComplete);
   }
 
-  async function handleTaksDelete(id) {
+  function handleTaksDelete(id) {
     //alert("apagar task");
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      await axios.delete(`http://localhost:3001/tasks/${id}`);
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
