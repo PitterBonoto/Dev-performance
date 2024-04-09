@@ -199,7 +199,7 @@ export function Health() {
             <Input
               placeholder="digite a tarefa"
               value={task}
-              onChange={(ev) => setTask(ev.target.value)}
+              onChange={(ev) => setTask("teste")}
             />
             <PercProgress percBar={barStatus}></PercProgress>
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
@@ -225,8 +225,6 @@ export function Health() {
               </CheckTitle>
             </TaskContainer>
           ))}
-          <PercProgress percBar={statusBar} />
-          valor Perc: {statusBar}
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
 
