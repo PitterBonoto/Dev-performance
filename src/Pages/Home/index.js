@@ -57,10 +57,6 @@ function App() {
         <CornerstoneContainer>
           <Cornerstone onClick={GoToLeisure}></Cornerstone>
           <CornestoneTitle>Pessoal</CornestoneTitle>
-          <ProgressExt>
-            <PercProgress />
-            <ProgressInt />
-          </ProgressExt>
         </CornerstoneContainer>
       </ContainerItens>
     </Container>
