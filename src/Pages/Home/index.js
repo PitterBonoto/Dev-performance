@@ -38,7 +38,6 @@ function App() {
     <Container>
       <Logo alt="Logo" src={Logo1} />
       <Title>Os pilares da Produtividade:</Title>
-      <PercProgress>valor: </PercProgress>
       <Roof>
         <p>SUCESSO</p>
       </Roof>
