@@ -15,6 +15,10 @@ import {
   ContainerCitation,
   ImgSaude,
   ContainerItensToDoList,
+  ContainerTitleToDoList,
+  ProgressValue,
+  ProgressExt,
+  ProgressInt,
   Input,
   ButtonTodo,
   LabelTodo,
@@ -55,6 +59,9 @@ export function Health() {
     } else {
       //console.log(newTask);
       setTasks([...tasks, newTask]);
+
+      console.log(newTask);
+
       setTask("");
     }
   }
@@ -108,16 +115,34 @@ export function Health() {
     });
 
     const percentageComplete = (tasksTrue.length / tasks.length) * 100;
-    //setPercentageComplete(percentageComplete.toFixed(2));
     return percentageComplete.toFixed(2);
-    //return percentageComplete.toFixed(2);
   }
-  const statusBar = progressBar();
+
+  const barStatus = progressBar();
+  //console.log(progressBar());
 
   const navigate = useNavigate();
   function GoToHome() {
     navigate("/Home");
   }
+
+  function colorProgress() {
+    let colorBar = "";
+    if (barStatus <= 25) {
+      colorBar = "#ff0000";
+    }
+    if (barStatus > 25 && barStatus <= 50) {
+      colorBar = "#ea4d2a";
+    }
+    if (barStatus > 50 && barStatus <= 75) {
+      colorBar = "#ffff00";
+    }
+    if (barStatus > 75) {
+      colorBar = "#00ff00";
+    }
+    return colorBar;
+  }
+  const colorBar = colorProgress();
 
   return (
     <ContainerPrincipal>
@@ -160,7 +185,15 @@ export function Health() {
         </ContainerItens>
 
         <ContainerItensToDoList>
-          <TitleCard>Minhas Tarefas</TitleCard>
+          <ContainerTitleToDoList>
+            <TitleCard>Minhas Tarefas</TitleCard>
+            <ProgressExt>
+              <ProgressInt
+                style={{ width: barStatus + "%", background: colorBar }}
+              ></ProgressInt>
+              <ProgressValue>{barStatus}%</ProgressValue>
+            </ProgressExt>
+          </ContainerTitleToDoList>
           <LabelTodo>Criar tarefa</LabelTodo>
           <ContainerTodoListItens>
             <Input
@@ -168,6 +201,7 @@ export function Health() {
               value={task}
               onChange={(ev) => setTask(ev.target.value)}
             />
+            <PercProgress percBar={barStatus}></PercProgress>
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
           {tasks.map((task) => (

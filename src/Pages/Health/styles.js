@@ -121,6 +121,39 @@ export const ContainerItensToDoList = styled.div`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
 
+export const ContainerTitleToDoList = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 50px;
+margin-bottom: 20px;
+`;
+
+export const ProgressValue = styled.p`
+font-size: 15px;
+color: #2c2b2b;
+font-weight: 600;
+text-align: center;
+margin-top: 5px;
+`;
+
+export const ProgressExt = styled.div`
+  background-color: #ffffff;
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #000000;
+  border: none;
+`;
+
+export const ProgressInt = styled.div`
+  
+  height: 90%;
+  margin: 1px;
+  border-radius: 5px;
+  transition: 1s;
+`;
+
 export const LabelTodo = styled.label`
   color: #2c2b2b;
   font-size: 16px;

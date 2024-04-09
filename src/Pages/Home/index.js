@@ -12,8 +12,6 @@ import {
   CornerstoneContainer,
   Cornerstone,
   CornestoneTitle,
-  ProgressExt,
-  ProgressInt,
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
 
@@ -49,23 +47,18 @@ function App() {
         <CornerstoneContainer>
           <Cornerstone onClick={GoToHealth}></Cornerstone>
           <CornestoneTitle>Saúde</CornestoneTitle>
-          <ProgressExt>
-            <ProgressInt></ProgressInt>
-          </ProgressExt>
         </CornerstoneContainer>
 
         <CornerstoneContainer>
           <Cornerstone onClick={GoToStudies}></Cornerstone>
           <CornestoneTitle>Estudos</CornestoneTitle>
-          <ProgressExt>
-            <ProgressInt></ProgressInt>
-          </ProgressExt>
         </CornerstoneContainer>
 
         <CornerstoneContainer>
           <Cornerstone onClick={GoToLeisure}></Cornerstone>
           <CornestoneTitle>Pessoal</CornestoneTitle>
-          <ProgressExt onClick={teste}>
+          <ProgressExt>
+            <PercProgress />
             <ProgressInt />
           </ProgressExt>
         </CornerstoneContainer>
