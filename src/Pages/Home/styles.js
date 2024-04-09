@@ -94,22 +94,7 @@ export const Cornerstone = styled.button`
 export const CornestoneTitle = styled.h2`
   font-family: "Special Elite", system-ui;
   font-size: 25px;
-  margin: 5px 0;
+  margin-top: 20px;
 `;
 
-export const ProgressExt = styled.button`
-  background-color: #ffffff;
-  width: 70%;
-  height: 25px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px #000000;
-  //border: none;
-`;
 
-export const ProgressInt = styled.div`
-  width: 50%;
-  height: 90%;
-  margin: 1px;
-  border-radius: 5px;
-  background-color: #ea4d2a;
-`;

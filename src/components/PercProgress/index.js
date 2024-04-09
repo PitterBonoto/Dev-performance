@@ -1,6 +1,7 @@
-import React from "react";
+/*import React from "react";
 
 export function PercProgress({ children, percBar }) {
   console.log(percBar);
-  return <p percBar={percBar}>{percBar}</p>;
-}
+  //return <p percBar={percBar}>{percBar}</p>;
+  return percBar;
+}*/
