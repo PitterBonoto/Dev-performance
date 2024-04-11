@@ -1,7 +1,5 @@
-import React, { useContext, createContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router";
-
-import { PercProgress } from "../../components/PercProgress";
 
 import {
   Container,
