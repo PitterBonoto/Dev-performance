@@ -1,5 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router"; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
+
+import { ToastContainer, toast } from "react-toastify";
 
 import {
   Container,
@@ -21,12 +24,42 @@ function App() {
   const navigate = useNavigate();
 
   //-----------------------------Cadastrar----------------------------------
-  function ToRegister() {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [users, setUsers] = useState([]);
+
+  async function ToRegister() {
+    if (user === "" || password === "" || passwordConfirm === "") {
+      toast.error("🤔 Todos os campos precisam estar preechidos. 🤔");
+    } else if (password !== passwordConfirm) {
+      toast.warning("🤔 Suas senhas estão diferentes, verifique. 🤔");
+    } else {
+      const { data: newUser } = await axios.post(
+        "http://localhost:3001/users",
+        {
+          email: user,
+          password: password,
+        }
+      );
+      //console.log(newTask);
+      setUsers([...users, newUser]);
+      toast.success("😀 Você foi cadastrado com sucesso !!! 😀");
+      //console.log(newUser);
+
+      setUser("");
+      setPassword("");
+      setPasswordConfirm("");
+    }
+  }
+
+  function ToBackHome() {
     navigate("/");
   }
 
   return (
     <Container>
+      <ToastContainer />
       <Logo alt="Logo" src={Logo1} />
       <Welcome>
         <WelcomeTitle>Uma Escalada Rumo à Alta Performance:</WelcomeTitle>
@@ -41,15 +74,29 @@ function App() {
         <Title>Cadastre-se</Title>
 
         <InputLabel>E-mail</InputLabel>
-        <Input placeholder="E-mail" />
+        <Input
+          placeholder="E-mail"
+          value={user}
+          onChange={(ev) => setUser(ev.target.value)}
+        />
 
         <InputLabel>Senha</InputLabel>
-        <Input placeholder="Senha" />
+        <Input
+          placeholder="Senha"
+          type="password"
+          value={password}
+          onChange={(ev) => setPassword(ev.target.value)}
+        />
 
-        <InputLabel>Confirmar Senha</InputLabel>
-        <Input placeholder="Confirmar Senha" />
-
+        <InputLabel type="password">Confirmar Senha</InputLabel>
+        <Input
+          placeholder="Confirmar Senha"
+          type="password"
+          value={passwordConfirm}
+          onChange={(ev) => setPasswordConfirm(ev.target.value)}
+        />
         <Button onClick={ToRegister}>Cadastrar</Button>
+        <Register onClick={ToBackHome}>Voltar Login</Register>
       </ContainerItens>
     </Container>
   );
