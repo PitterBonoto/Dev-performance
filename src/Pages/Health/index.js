@@ -71,11 +71,11 @@ function Health() {
       setTasks(newTask);
     }
     fetchTasks();
-  }, [tasks]);
+  }, []);
 
   function handleTaksCompletation(id) {
     const taskComplete = tasks.map((task) => {
-      if (task.id === id) {
+      if (task._id === id) {
         return { ...task, isComplete: !task.isComplete };
       }
       return task;
@@ -105,6 +105,8 @@ function Health() {
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
+    const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+    setTasks(newTask);
   }
 
   function progressBar() {
@@ -208,7 +210,7 @@ function Health() {
                 <CheckBoxContainer>
                   <InputCheck
                     type="checkbox"
-                    onClick={() => handleTaksCompletation(task.id)}
+                    onClick={() => handleTaksCompletation(task._id)}
                   />
                   <Paragraph isTaskCompleted={task.isComplete}>
                     {task.title}
