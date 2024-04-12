@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { v4 } from "uuid";
+
+//import { apiDevPerformance as api } from "../../services/api.js";
+//import { v4 } from "uuid";
 
 import {
   ContainerPrincipal,
@@ -45,11 +47,9 @@ function Health() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  const [percentageComplete, setPercentageComplete] = useState("");
-
   async function handleCreateTask() {
     const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
-      id: v4(),
+      /*id: v4(),*/
       title: task,
       isComplete: false,
     });
@@ -59,7 +59,7 @@ function Health() {
       //console.log(newTask);
       setTasks([...tasks, newTask]);
 
-      console.log(newTask);
+      //console.log(newTask);
 
       setTask("");
     }
@@ -68,7 +68,6 @@ function Health() {
   useEffect(() => {
     async function fetchTasks() {
       const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-      //console.log(data);
       setTasks(newTask);
     }
     fetchTasks();
@@ -76,7 +75,7 @@ function Health() {
 
   function handleTaksCompletation(id) {
     const taskComplete = tasks.map((task) => {
-      if (task.id === id) {
+      if (task._id === id) {
         return { ...task, isComplete: !task.isComplete };
       }
       return task;
@@ -101,9 +100,13 @@ function Health() {
     } else {
       await axios.delete(`http://localhost:3001/tasks/${id}`);
       const taskDelete = tasks.filter((task) => task.id !== id);
+      //console.log(taskDelete);
+      //console.log(tasks);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
+    const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+    setTasks(newTask);
   }
 
   function progressBar() {
@@ -118,7 +121,6 @@ function Health() {
   }
 
   const barStatus = progressBar();
-  //console.log(progressBar());
 
   const navigate = useNavigate();
   function GoToHome() {
@@ -208,7 +210,7 @@ function Health() {
                 <CheckBoxContainer>
                   <InputCheck
                     type="checkbox"
-                    onClick={() => handleTaksCompletation(task.id)}
+                    onClick={() => handleTaksCompletation(task._id)}
                   />
                   <Paragraph isTaskCompleted={task.isComplete}>
                     {task.title}
@@ -216,7 +218,7 @@ function Health() {
                 </CheckBoxContainer>
                 <TrashStyle>
                   <Trash2
-                    onClick={() => handleTaksDelete(task.id)}
+                    onClick={() => handleTaksDelete(task._id)}
                     style={{ color: " #ff0000" }}
                   />
                 </TrashStyle>

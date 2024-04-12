@@ -1,7 +1,5 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext } from "react";
 import { useNavigate } from "react-router";
-import Modal from "react-modal";
-
 
 import { PercProgress } from "../../components/PercProgress";
 

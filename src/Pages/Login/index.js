@@ -49,7 +49,7 @@ function App() {
         <Input placeholder="Usuário" />
 
         <InputLabel>Senha</InputLabel>
-        <Input placeholder="Senha" />
+        <Input placeholder="Senha" type="password" />
 
         <Button onClick={ToEnter}>Entrar</Button>
         <Register onClick={ToEnterRegister}>Cadastre-se</Register>
