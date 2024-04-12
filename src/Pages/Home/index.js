@@ -1,5 +1,7 @@
-import React, { useContext, createContext } from "react";
+import React, { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router";
+import Modal from "react-modal";
+
 
 import { PercProgress } from "../../components/PercProgress";
 
@@ -12,7 +14,9 @@ import {
   CornerstoneContainer,
   Cornerstone,
   CornestoneTitle,
-} from "./styles";
+  Base,
+  BaseTitle
+ } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
 
 function App() {
@@ -34,6 +38,17 @@ function App() {
     alert("sera que foi");
   }
 
+  Modal.setAppElement("#root");
+  const [modalIsOpen, SetModalIsOpen] = useState(false);
+
+  function openModal() {
+    SetModalIsOpen(true);
+  }
+
+  function closeModal() {
+    SetModalIsOpen(false);
+  }
+
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
@@ -44,20 +59,37 @@ function App() {
 
       <ContainerItens>
         <CornerstoneContainer>
-          <Cornerstone onClick={GoToHealth}></Cornerstone>
-          <CornestoneTitle>Saúde</CornestoneTitle>
+          <Cornerstone onClick={GoToHealth}>
+          <CornestoneTitle>SAÚDE</CornestoneTitle>
+          </Cornerstone>
         </CornerstoneContainer>
 
         <CornerstoneContainer>
-          <Cornerstone onClick={GoToStudies}></Cornerstone>
-          <CornestoneTitle>Estudos</CornestoneTitle>
+          <Cornerstone onClick={GoToStudies}>
+          <CornestoneTitle>ESTUDOS</CornestoneTitle>
+          </Cornerstone>
         </CornerstoneContainer>
 
         <CornerstoneContainer>
-          <Cornerstone onClick={GoToLeisure}></Cornerstone>
-          <CornestoneTitle>Pessoal</CornestoneTitle>
+          <Cornerstone onClick={GoToLeisure}>
+          <CornestoneTitle>LAZER</CornestoneTitle>
+          </Cornerstone>
         </CornerstoneContainer>
       </ContainerItens>
+
+    <Base onClick={openModal}>
+    <BaseTitle>COMECE POR AQUI</BaseTitle>
+    </Base>
+   <Modal
+   isOpen={modalIsOpen}
+   onRequestClose={closeModal}
+   contentLabel="Example Modal"
+   overlayClassName="modal-overlay"
+   className="modal-content"
+   >
+    <h1>Eu sou o modal</h1>
+    <button onClick={closeModal}>Close</button>
+   </Modal>
     </Container>
   );
 }
