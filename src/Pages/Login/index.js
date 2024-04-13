@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import * as Yup from "yup";
+
+import { ToastContainer, toast } from "react-toastify";
 
 import {
   Container,
@@ -21,8 +25,34 @@ function App() {
   const navigate = useNavigate();
 
   //------------------------Entrar na Home------------------------------
-  function ToEnter() {
-    navigate("/Home");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function ToEnter() {
+    const schema = Yup.object({
+      user: Yup.string().email().required(),
+      password: Yup.string().min(6).required(),
+    });
+
+    const isValid = await schema.isValid({ user, password });
+
+    if (user === "" || password === "") {
+      toast.warn("🤔 Todos os campos precisam estar preechidos. 🤔");
+    } else if (isValid === false) {
+      toast.error("❌ Você não tem autorização para entrar no sistema. ❌");
+    } else {
+      const { data: userSearch } = await axios.post(
+        "http://localhost:3001/login",
+        {
+          email: user,
+          password: password,
+        }
+      );
+      if (userSearch.email === user && password === password) {
+        //alert("entrei na home");
+        navigate("/Home");
+      }
+    }
   }
 
   //------------------------Entrar em Cadastrar-------------------------
@@ -32,6 +62,7 @@ function App() {
 
   return (
     <Container>
+      <ToastContainer />
       <Logo alt="Logo" src={Logo1} />
       <Welcome>
         <WelcomeTitle>Uma Escalada Rumo à Alta Performance:</WelcomeTitle>
@@ -46,12 +77,23 @@ function App() {
         <Title>Login</Title>
 
         <InputLabel>Usuário</InputLabel>
-        <Input placeholder="Usuário" />
+        <Input
+          placeholder="Usuário"
+          value={user}
+          onChange={(ev) => setUser(ev.target.value)}
+        />
 
         <InputLabel>Senha</InputLabel>
-        <Input placeholder="Senha" type="password" />
+        <Input
+          placeholder="Senha"
+          type="password"
+          value={password}
+          onChange={(ev) => setPassword(ev.target.value)}
+        />
 
-        <Button onClick={ToEnter}>Entrar</Button>
+        <Button type="submit" onClick={ToEnter}>
+          Entrar
+        </Button>
         <Register onClick={ToEnterRegister}>Cadastre-se</Register>
       </ContainerItens>
     </Container>

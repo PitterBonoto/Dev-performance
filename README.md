@@ -80,3 +80,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
     -> yarn add uuid
     -> utilizar essa forma de import onde for usar ==> import { v4 } from "uuid";
+
+### instalar o uuid
+
+    -> yarn add yup
