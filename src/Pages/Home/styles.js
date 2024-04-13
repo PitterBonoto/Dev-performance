@@ -103,12 +103,12 @@ export const CornestoneTitle = styled.h2`
   margin-top: 20px;
   writing-mode: vertical-lr;
   text-orientation: upright;
-  letter-spacing: -2px;  
+  letter-spacing: -2px;
   text-shadow: 2px 2px 5px #000000;
 `;
 
 export const Base = styled.button`
-background: url("${BackgroundBase}");
+  background: url("${BackgroundBase}");
   background-size: 100% 100%;
   width: 720px;
   height: 70px;
@@ -132,6 +132,7 @@ background: url("${BackgroundBase}");
 
   &:active {
     background: url("${BackgroundBase}");
+    background-size: 100% 100%;
     opacity: 0.6;
     transition: 0.5s;
   }
@@ -143,9 +144,5 @@ export const BaseTitle = styled.h2`
   font-weight: 700;
   text-shadow: 1px 1px 5px #000000;
   margin-top: 30px;
-  `;
-
-
-
-
+`;
 
