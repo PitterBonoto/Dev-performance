@@ -81,7 +81,7 @@ function Health() {
       return task;
     });
 
-    let validIsComplete = taskComplete.find(
+    taskComplete.find(
       (item) =>
         item.isComplete === true &&
         toast.success(
@@ -100,8 +100,6 @@ function Health() {
     } else {
       await axios.delete(`http://localhost:3001/tasks/${id}`);
       const taskDelete = tasks.filter((task) => task.id !== id);
-      //console.log(taskDelete);
-      //console.log(tasks);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }

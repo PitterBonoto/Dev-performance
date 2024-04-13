@@ -41,16 +41,20 @@ function App() {
     } else if (isValid === false) {
       toast.error("❌ Você não tem autorização para entrar no sistema. ❌");
     } else {
-      const { data: userSearch } = await axios.post(
-        "http://localhost:3001/login",
-        {
-          email: user,
-          password: password,
+      try {
+        const { data: userSearch } = await axios.post(
+          "http://localhost:3001/login",
+          {
+            email: user,
+            password: password,
+          }
+        );
+
+        if (userSearch.email === user && password.email === password) {
+          navigate("/Home");
         }
-      );
-      if (userSearch.email === user && password === password) {
-        //alert("entrei na home");
-        navigate("/Home");
+      } catch (error) {
+        toast.error("❌ Você não tem autorização para entrar no sistema. ❌");
       }
     }
   }

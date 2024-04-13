@@ -97,7 +97,9 @@ export const Input = styled.input`
   outline: none;
   margin-bottom: 25px;
 
-  color: #ea4d2a;
+  //color: #ea4d2a;
+  //color: #ff8c00;
+  color: #fc791e;
   font-size: 16px;
   font-weight: 400;
 `;

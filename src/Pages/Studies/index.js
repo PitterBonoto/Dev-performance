@@ -34,7 +34,6 @@ import { Trash2 } from "lucide-react";
 import { Paragraph } from "../../components/P";
 
 function Studies() {
-  //const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -45,9 +44,7 @@ function Studies() {
       const n1 = 987654321;
       const idRandon = (num) => Math.floor(Math.random() * num);
       const newTask = { id: idRandon(n1), title: task, isComplete: false };
-      //console.log(newTask);
       setTasks([...tasks, newTask]);
-      //console.log(newTask);
       setTask("");
     }
   }
@@ -60,7 +57,7 @@ function Studies() {
       return task;
     });
 
-    let validIsComplete = taskComplete.find(
+    taskComplete.find(
       (item) =>
         item.isComplete === true &&
         toast.success(
@@ -68,12 +65,10 @@ function Studies() {
         )
     );
 
-    //console.log(taskComplete);
     setTasks(taskComplete);
   }
 
   function handleTaksDelete(id) {
-    //alert("apagar task");
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {

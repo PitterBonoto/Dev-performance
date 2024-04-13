@@ -34,7 +34,6 @@ import { Trash2 } from "lucide-react";
 import { Paragraph } from "../../components/P";
 
 function Leisure() {
-  const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -60,7 +59,7 @@ function Leisure() {
       return task;
     });
 
-    let validIsComplete = taskComplete.find(
+    taskComplete.find(
       (item) =>
         item.isComplete === true &&
         toast.success(
