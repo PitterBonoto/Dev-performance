@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router";
 import Modal from "react-modal";
-import "./modalstyles.css"
+import "./modalstyles.css";
 
 import {
   Container,
@@ -39,9 +39,9 @@ function App() {
   Modal.setAppElement("#root");
   const [modalIsOpen, SetModalIsOpen] = useState(false);
 
-   function openModal() {
-     SetModalIsOpen(true);
-   }
+  function openModal() {
+    SetModalIsOpen(true);
+  }
 
   function closeModal() {
     SetModalIsOpen(false);
@@ -75,19 +75,57 @@ function App() {
         </CornerstoneContainer>
       </ContainerItens>
 
-    <Base onClick={openModal}>
-    <BaseTitle>COMECE POR AQUI</BaseTitle>
-    </Base>
-   <Modal
-   isOpen={modalIsOpen}
-   onRequestClose={closeModal}
-   contentLabel="Example Modal"
-   overlayClassName="modal-overlay"
-   className="modal-content"
-   >
-    <h1>Eu sou o modal</h1>
-    <button onClick={closeModal}>Close</button>
-   </Modal>
+      <Base onClick={openModal}>
+        <BaseTitle>COMECE POR AQUI</BaseTitle>
+      </Base>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <div>
+        <h1>Comece por aqui!</h1>
+        <h4>
+          Esse aplicativo tem como objetivo te direcionar na sua jornada rumo ao
+          sucesso.
+        </h4>
+        <p>Antes de dar início, gostaria de fazermos algumas observações. </p>
+        <ul>
+          <li>
+            1- Tenha em mente o PORQUÊ e POR QUEM você está trilhando essa
+            jornada. Saber o seu porquê e o seu por quem irá te ajudar a se
+            manter firme nessa caminhada que terá altos e baixos.
+          </li>
+          <li>
+            2- Tenha uma META clara em relação aos seus objetivos. O que você
+            quer? O que você precisa fazer para chegar lá? Como você irá chegar
+            lá? Mas lembre-se metas razoáveis são mais fáceis de gerenciar. Crie
+            uma meta razoável e à medida que alcançar seus objetivos, trace
+            outros objetivos para você.
+          </li>
+          <li>
+            3- Gerencie suas frustrações: VOCÊ VAI SE FRUSTRAR! Sua jornada será
+            longa e pelo caminho haverá dificuldades e frustrações. Fique atento
+            as suas emoções envolvidas nesse processo e gerencie as suas
+            frustrações. Você poderá ficar frustrado porque teve dificuldades,
+            porque o conteúdo atual é mais difícil, por que está passando por
+            problemas pessoais ou porque teve menos tempo essa semana.
+            Lembre-se- se que feito é melhor que perfeito. Se manter em
+            movimento é melhor que ficar parado. Volte o mais breve possível.
+          </li>
+          <li>
+            4- AJUSTE SUAS EXPECTATIVAS: fique atento as expectativas que você
+            tem nesse processo. Sucesso não é sobre execução perfeita, tempo
+            perfeito e disponibilidade perfeita. Então sim, você irá falhar, mas
+            isso não precisa ser determinante para você desistir.
+          </li>
+        </ul>
+        <p>Mãos à obra!</p>
+        </div>
+        <button onClick={closeModal}>Close</button>
+      </Modal>
     </Container>
   );
 }
