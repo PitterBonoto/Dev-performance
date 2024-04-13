@@ -50,7 +50,7 @@ function App() {
           }
         );
 
-        if (userSearch.email === user && password.email === password) {
+        if (userSearch.email === user && password === password) {
           navigate("/Home");
         }
       } catch (error) {
