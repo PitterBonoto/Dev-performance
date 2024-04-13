@@ -44,6 +44,7 @@ function App() {
     } else if (password !== passwordConfirm) {
       toast.warning("🤔 Suas senhas estão diferentes, verifique. 🤔");
     } else {
+      //alert(password);
       const { data: newUser } = await axios.post(
         "http://localhost:3001/users",
         {
