@@ -146,3 +146,49 @@ export const BaseTitle = styled.h2`
   margin-top: 30px;
 `;
 
+export const ContainerModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+`;
+
+export const TitleModal = styled.h1`
+  font-family: "Special Elite", system-ui;
+  font-size: 32px;
+  color: #ea4d2a;
+  text-shadow: 1px 1px 5px #000000;
+`;
+
+export const CaptionModal = styled.h4`
+  font-family: "Special Elite", system-ui;
+  font-size: 22px;
+`;
+
+export const ParagraphModal = styled.p`
+  color: #2c2b2b;
+  font-weight: 600;
+  font-size: 17px;
+`;
+
+export const ListModal = styled.ul`
+  color: #2c2b2b;
+  font-size: 17px;
+`;
+export const ButtonModal = styled.button`
+  border-radius: 10px;
+  padding: 12px 20px;
+  border: none;
+  background-color: #ea4d2a;
+  color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+`;

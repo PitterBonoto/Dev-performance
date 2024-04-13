@@ -14,6 +14,12 @@ import {
   CornestoneTitle,
   Base,
   BaseTitle,
+  ContainerModal,
+  TitleModal,
+  CaptionModal,
+  ParagraphModal,
+  ListModal,
+  ButtonModal
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
 
@@ -85,28 +91,28 @@ function App() {
         overlayClassName="modal-overlay"
         className="modal-content"
       >
-        <div>
-        <h1>Comece por aqui!</h1>
-        <h4>
+        <ContainerModal>
+        <TitleModal>Comece por aqui...</TitleModal>
+        <CaptionModal>
           Esse aplicativo tem como objetivo te direcionar na sua jornada rumo ao
           sucesso.
-        </h4>
-        <p>Antes de dar início, gostaria de fazermos algumas observações. </p>
-        <ul>
+        </CaptionModal>
+        <ParagraphModal>Antes de dar início, gostaria de fazermos algumas observações: </ParagraphModal>
+        <ListModal>
           <li>
-            1- Tenha em mente o PORQUÊ e POR QUEM você está trilhando essa
+            Tenha em mente o PORQUÊ e POR QUEM você está trilhando essa
             jornada. Saber o seu porquê e o seu por quem irá te ajudar a se
             manter firme nessa caminhada que terá altos e baixos.
           </li>
           <li>
-            2- Tenha uma META clara em relação aos seus objetivos. O que você
+            Tenha uma META clara em relação aos seus objetivos. O que você
             quer? O que você precisa fazer para chegar lá? Como você irá chegar
             lá? Mas lembre-se metas razoáveis são mais fáceis de gerenciar. Crie
             uma meta razoável e à medida que alcançar seus objetivos, trace
             outros objetivos para você.
           </li>
           <li>
-            3- Gerencie suas frustrações: VOCÊ VAI SE FRUSTRAR! Sua jornada será
+            Gerencie suas frustrações: VOCÊ VAI SE FRUSTRAR! Sua jornada será
             longa e pelo caminho haverá dificuldades e frustrações. Fique atento
             as suas emoções envolvidas nesse processo e gerencie as suas
             frustrações. Você poderá ficar frustrado porque teve dificuldades,
@@ -116,15 +122,15 @@ function App() {
             movimento é melhor que ficar parado. Volte o mais breve possível.
           </li>
           <li>
-            4- AJUSTE SUAS EXPECTATIVAS: fique atento as expectativas que você
+            AJUSTE SUAS EXPECTATIVAS: fique atento as expectativas que você
             tem nesse processo. Sucesso não é sobre execução perfeita, tempo
             perfeito e disponibilidade perfeita. Então sim, você irá falhar, mas
             isso não precisa ser determinante para você desistir.
           </li>
-        </ul>
-        <p>Mãos à obra!</p>
-        </div>
-        <button onClick={closeModal}>Close</button>
+        </ListModal>
+        <CaptionModal>Mãos à obra!</CaptionModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal}>Fechar</ButtonModal>
       </Modal>
     </Container>
   );

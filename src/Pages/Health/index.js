@@ -118,7 +118,17 @@ function Health() {
     return percentageComplete.toFixed(0);
   }
 
-  const barStatus = progressBar();
+  let barStatus = progressBar();
+
+  function valueBarStatus(){
+    if(isNaN(barStatus)){
+      barStatus = 0
+    } 
+    return barStatus
+  }
+
+const barStatusValue = valueBarStatus();
+ 
 
   const navigate = useNavigate();
   function GoToHome() {
@@ -190,7 +200,7 @@ function Health() {
               <ProgressInt
                 style={{ width: barStatus + "%", background: colorBar }}
               ></ProgressInt>
-              <ProgressValue>{barStatus}%</ProgressValue>
+              <ProgressValue>{barStatusValue}%</ProgressValue>
             </ProgressExt>
           </ContainerTitleToDoList>
           <LabelTodo>Criar tarefa</LabelTodo>
