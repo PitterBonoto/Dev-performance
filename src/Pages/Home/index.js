@@ -1,7 +1,8 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext } from "react";
 import { useNavigate } from "react-router";
-import "./modalstyles.css";
-import Modal from "react-modal";
+
+import { PercProgress } from "../../components/PercProgress";
+
 import {
   Container,
   Title,
@@ -31,17 +32,20 @@ function App() {
     navigate("/Lazer");
   }
 
+  function teste() {
+    alert("sera que foi");
+  }
+
   Modal.setAppElement("#root");
   const [modalIsOpen, SetModalIsOpen] = useState(false);
 
-  function openModal() {
-    SetModalIsOpen(true);
-  }
+  // function openModal() {
+  //   SetModalIsOpen(true);
+  // }
 
   function closeModal() {
     SetModalIsOpen(false);
   }
- 
 
   return (
     <Container>
@@ -71,19 +75,19 @@ function App() {
         </CornerstoneContainer>
       </ContainerItens>
 
-      <Base onClick={openModal}>
-        <BaseTitle>COMECE POR AQUI</BaseTitle>
-      </Base>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        overlayClassName="modal-overlay"
-        className="modal-content"
-      >
-        <h1>Eu sou o modal</h1>
-        <button onClick={closeModal}>fechar</button>
-      </Modal>
+    <Base onClick={openModal}>
+    <BaseTitle>COMECE POR AQUI</BaseTitle>
+    </Base>
+   <Modal
+   isOpen={modalIsOpen}
+   onRequestClose={closeModal}
+   contentLabel="Example Modal"
+   overlayClassName="modal-overlay"
+   className="modal-content"
+   >
+    <h1>Eu sou o modal</h1>
+    <button onClick={closeModal}>Close</button>
+   </Modal>
     </Container>
   );
 }

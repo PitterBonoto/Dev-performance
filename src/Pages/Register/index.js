@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import * as Yup from "yup";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -30,8 +31,16 @@ function App() {
   const [users, setUsers] = useState([]);
 
   async function ToRegister() {
-    if (user === "" || password === "" || passwordConfirm === "") {
-      toast.error("🤔 Todos os campos precisam estar preechidos. 🤔");
+    const schema = Yup.object({
+      user: Yup.string().email().required(),
+      password: Yup.string().min(6).required(),
+    });
+
+    const isValid = await schema.isValid({ user, password });
+    if (isValid === false) {
+      toast.error("❌ Email ou senha invalidos, verifique por favor. ❌");
+    } else if (password !== passwordConfirm) {
+      toast.warning("🤔 Suas senhas estão diferentes, verifique. 🤔");
     } else if (password !== passwordConfirm) {
       toast.warning("🤔 Suas senhas estão diferentes, verifique. 🤔");
     } else {
@@ -42,10 +51,8 @@ function App() {
           password: password,
         }
       );
-      //console.log(newTask);
       setUsers([...users, newUser]);
       toast.success("😀 Você foi cadastrado com sucesso !!! 😀");
-      //console.log(newUser);
 
       setUser("");
       setPassword("");
