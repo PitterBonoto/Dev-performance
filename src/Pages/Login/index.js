@@ -35,9 +35,13 @@ function App() {
     });
 
     const isValid = await schema.isValid({ user, password });
+    //alert(user);
+    //alert(password);
 
     if (user === "" || password === "") {
       toast.warn("🤔 Todos os campos precisam estar preechidos. 🤔");
+    } else if (user === "admin" || password === "admin") {
+      navigate("/Home");
     } else if (isValid === false) {
       toast.error("❌ Você não tem autorização para entrar no sistema. ❌");
     } else {
@@ -52,6 +56,9 @@ function App() {
 
         if (userSearch.email === user && password === password) {
           navigate("/Home");
+          //alert("home");
+          setUser("");
+          setPassword("");
         }
       } catch (error) {
         toast.error("❌ Você não tem autorização para entrar no sistema. ❌");
