@@ -1,7 +1,7 @@
-import React, { useContext, createContext } from "react";
+import React, { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router";
-
-import { PercProgress } from "../../components/PercProgress";
+import Modal from "react-modal";
+import "./modalstyles.css"
 
 import {
   Container,
@@ -39,9 +39,9 @@ function App() {
   Modal.setAppElement("#root");
   const [modalIsOpen, SetModalIsOpen] = useState(false);
 
-  // function openModal() {
-  //   SetModalIsOpen(true);
-  // }
+   function openModal() {
+     SetModalIsOpen(true);
+   }
 
   function closeModal() {
     SetModalIsOpen(false);
