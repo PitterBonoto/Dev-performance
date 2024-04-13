@@ -54,7 +54,7 @@ function App() {
           }
         );
 
-        if (userSearch.email === user && password === password) {
+        if (userSearch.email === user && userSearch.password === password) {
           navigate("/Home");
           //alert("home");
           setUser("");
