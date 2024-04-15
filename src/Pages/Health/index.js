@@ -120,17 +120,17 @@ function Health() {
 
   let barStatus = progressBar();
 
-  function valueBarStatus(){
-    if(isNaN(barStatus)){
-      barStatus = 0
-    } 
-    return barStatus
+  function valueBarStatus() {
+    if (isNaN(barStatus)) {
+      barStatus = 0;
+    }
+    return barStatus;
   }
 
-const barStatusValue = valueBarStatus();
- 
+  const barStatusValue = valueBarStatus();
 
   const navigate = useNavigate();
+
   function GoToHome() {
     navigate("/Home");
   }

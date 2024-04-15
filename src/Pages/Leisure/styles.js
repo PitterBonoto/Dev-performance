@@ -19,6 +19,18 @@ export const Logo = styled.img`
   top: 20px;
   filter: drop-shadow(1px 1px 5px #000000);
 `;
+/* teste do texto cima tela */
+export const Title = styled.h1`
+  width: 200px;
+  margin-bottom: 100px;
+  font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-size: 60px;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  filter: drop-shadow(1px 1px 5px #000000);
+`;
 
 export const ContainerItensPrincipal = styled.div`
   display: flex;
@@ -118,6 +130,40 @@ export const ContainerItensToDoList = styled.div`
   padding: 15px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 `;
+
+/* Aqui começa a progressBar */
+export const ContainerTitleToDoList = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 20px;
+`;
+
+export const ProgressValue = styled.p`
+  font-size: 15px;
+  color: #2c2b2b;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 5px;
+`;
+
+export const ProgressExt = styled.div`
+  background-color: #ffffff;
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #000000;
+  border: none;
+`;
+
+export const ProgressInt = styled.div`
+  height: 90%;
+  margin: 1px;
+  border-radius: 5px;
+  transition: 1s;
+`;
+/* Aqui termina a progressBar */
 
 export const LabelTodo = styled.label`
   color: #2c2b2b;

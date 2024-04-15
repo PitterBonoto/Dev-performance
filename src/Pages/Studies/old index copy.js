@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import axios from "axios";
 
 import {
   ContainerPrincipal,
@@ -14,10 +13,6 @@ import {
   ContainerCitation,
   ImgEstudo,
   ContainerItensToDoList,
-  ContainerTitleToDoList,
-  ProgressValue,
-  ProgressExt,
-  ProgressInt,
   Input,
   ButtonTodo,
   LabelTodo,
@@ -42,35 +37,21 @@ function Studies() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  async function handleCreateTask() {
-    const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
-      /*id: v4(),*/
-      title: task,
-      isComplete: false,
-    });
+  function handleCreateTask() {
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      //console.log(newTask);
+      const n1 = 987654321;
+      const idRandon = (num) => Math.floor(Math.random() * num);
+      const newTask = { id: idRandon(n1), title: task, isComplete: false };
       setTasks([...tasks, newTask]);
-
-      //console.log(newTask);
-
       setTask("");
     }
   }
 
-  useEffect(() => {
-    async function fetchTasks() {
-      const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-      setTasks(newTask);
-    }
-    fetchTasks();
-  }, []);
-
   function handleTaksCompletation(id) {
     const taskComplete = tasks.map((task) => {
-      if (task._id === id) {
+      if (task.id === id) {
         return { ...task, isComplete: !task.isComplete };
       }
       return task;
@@ -84,69 +65,24 @@ function Studies() {
         )
     );
 
-    //console.log(taskComplete);
     setTasks(taskComplete);
   }
 
-  async function handleTaksDelete(id) {
-    //alert("apagar task");
+  function handleTaksDelete(id) {
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      await axios.delete(`http://localhost:3001/tasks/${id}`);
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
-    const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-    setTasks(newTask);
   }
-
-  function progressBar() {
-    const tasksTrue = tasks.filter((task) => {
-      if (task.isComplete === true) {
-        return task;
-      }
-    });
-
-    const percentageComplete = (tasksTrue.length / tasks.length) * 100;
-    return percentageComplete.toFixed(0);
-  }
-
-  let barStatus = progressBar();
-
-  function valueBarStatus() {
-    if (isNaN(barStatus)) {
-      barStatus = 0;
-    }
-    return barStatus;
-  }
-
-  const barStatusValue = valueBarStatus();
 
   const navigate = useNavigate();
 
   function GoToHome() {
     navigate("/Home");
   }
-
-  function colorProgress() {
-    let colorBar = "";
-    if (barStatus <= 25) {
-      colorBar = "#ff0000";
-    }
-    if (barStatus > 25 && barStatus <= 50) {
-      colorBar = "#ea4d2a";
-    }
-    if (barStatus > 50 && barStatus <= 75) {
-      colorBar = "#ffff00";
-    }
-    if (barStatus > 75) {
-      colorBar = "#00ff00";
-    }
-    return colorBar;
-  }
-  const colorBar = colorProgress();
 
   return (
     <ContainerPrincipal>
@@ -214,17 +150,7 @@ function Studies() {
         </ContainerItens>
 
         <ContainerItensToDoList>
-          <ContainerTitleToDoList>
-            <TitleCard>Minhas Tarefas</TitleCard>
-
-            <ProgressExt>
-              <ProgressInt
-                style={{ width: barStatus + "%", background: colorBar }}
-              ></ProgressInt>
-              <ProgressValue>{barStatusValue}%</ProgressValue>
-            </ProgressExt>
-          </ContainerTitleToDoList>
-
+          <TitleCard>Minhas Tarefas</TitleCard>
           <LabelTodo>Criar tarefa</LabelTodo>
 
           <ContainerTodoListItens>
@@ -243,7 +169,7 @@ function Studies() {
                 <CheckBoxContainer>
                   <InputCheck
                     type="checkbox"
-                    onClick={() => handleTaksCompletation(task._id)}
+                    onClick={() => handleTaksCompletation(task.id)}
                   />
                   <Paragraph isTaskCompleted={task.isComplete}>
                     {task.title}
@@ -251,7 +177,7 @@ function Studies() {
                 </CheckBoxContainer>
                 <TrashStyle>
                   <Trash2
-                    onClick={() => handleTaksDelete(task._id)}
+                    onClick={() => handleTaksDelete(task.id)}
                     style={{ color: " #ff0000" }}
                   />
                 </TrashStyle>

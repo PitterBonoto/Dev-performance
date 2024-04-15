@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 
 import {
   ContainerPrincipal,
   Logo,
+  Title,
   ContainerItensPrincipal,
   ContainerItens,
   TitleCard,
@@ -13,6 +15,10 @@ import {
   ContainerCitation,
   ImgLazer,
   ContainerItensToDoList,
+  ContainerTitleToDoList,
+  ProgressValue,
+  ProgressExt,
+  ProgressInt,
   Input,
   ButtonTodo,
   LabelTodo,
@@ -37,23 +43,35 @@ function Leisure() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
-  function handleCreateTask() {
+  async function handleCreateTask() {
+    const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
+      /*id: v4(),*/
+      title: task,
+      isComplete: false,
+    });
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      const n1 = 987654321;
-      const idRandon = (num) => Math.floor(Math.random() * num);
-      const newTask = { id: idRandon(n1), title: task, isComplete: false };
       //console.log(newTask);
       setTasks([...tasks, newTask]);
+
       //console.log(newTask);
+
       setTask("");
     }
   }
 
+  useEffect(() => {
+    async function fetchTasks() {
+      const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+      setTasks(newTask);
+    }
+    fetchTasks();
+  }, []);
+
   function handleTaksCompletation(id) {
     const taskComplete = tasks.map((task) => {
-      if (task.id === id) {
+      if (task._id === id) {
         return { ...task, isComplete: !task.isComplete };
       }
       return task;
@@ -71,16 +89,41 @@ function Leisure() {
     setTasks(taskComplete);
   }
 
-  function handleTaksDelete(id) {
+  async function handleTaksDelete(id) {
     //alert("apagar task");
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
+      await axios.delete(`http://localhost:3001/tasks/${id}`);
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
+    const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+    setTasks(newTask);
   }
+
+  function progressBar() {
+    const tasksTrue = tasks.filter((task) => {
+      if (task.isComplete === true) {
+        return task;
+      }
+    });
+
+    const percentageComplete = (tasksTrue.length / tasks.length) * 100;
+    return percentageComplete.toFixed(0);
+  }
+
+  let barStatus = progressBar();
+
+  function valueBarStatus() {
+    if (isNaN(barStatus)) {
+      barStatus = 0;
+    }
+    return barStatus;
+  }
+
+  const barStatusValue = valueBarStatus();
 
   const navigate = useNavigate();
 
@@ -88,10 +131,29 @@ function Leisure() {
     navigate("/Home");
   }
 
+  function colorProgress() {
+    let colorBar = "";
+    if (barStatus <= 25) {
+      colorBar = "#ff0000";
+    }
+    if (barStatus > 25 && barStatus <= 50) {
+      colorBar = "#ea4d2a";
+    }
+    if (barStatus > 50 && barStatus <= 75) {
+      colorBar = "#ffff00";
+    }
+    if (barStatus > 75) {
+      colorBar = "#00ff00";
+    }
+    return colorBar;
+  }
+  const colorBar = colorProgress();
+
   return (
     <ContainerPrincipal>
       <ToastContainer />
       <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
+      <Title>Lazer</Title>
       <ContainerItensPrincipal>
         <ContainerItens>
           <TitleCard>Descanse o corpo e a mente</TitleCard>
@@ -140,7 +202,17 @@ function Leisure() {
         </ContainerItens>
 
         <ContainerItensToDoList>
-          <TitleCard>Minhas Tarefas</TitleCard>
+          <ContainerTitleToDoList>
+            <TitleCard>Minhas Tarefas</TitleCard>
+
+            <ProgressExt>
+              <ProgressInt
+                style={{ width: barStatus + "%", background: colorBar }}
+              ></ProgressInt>
+              <ProgressValue>{barStatusValue}%</ProgressValue>
+            </ProgressExt>
+          </ContainerTitleToDoList>
+
           <LabelTodo>Criar tarefa</LabelTodo>
 
           <ContainerTodoListItens>
@@ -159,7 +231,7 @@ function Leisure() {
                 <CheckBoxContainer>
                   <InputCheck
                     type="checkbox"
-                    onClick={() => handleTaksCompletation(task.id)}
+                    onClick={() => handleTaksCompletation(task._id)}
                   />
                   <Paragraph isTaskCompleted={task.isComplete}>
                     {task.title}
@@ -167,7 +239,7 @@ function Leisure() {
                 </CheckBoxContainer>
                 <TrashStyle>
                   <Trash2
-                    onClick={() => handleTaksDelete(task.id)}
+                    onClick={() => handleTaksDelete(task._id)}
                     style={{ color: " #ff0000" }}
                   />
                 </TrashStyle>
