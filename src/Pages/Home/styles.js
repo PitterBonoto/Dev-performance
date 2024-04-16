@@ -29,7 +29,7 @@ export const Title = styled.h1`
   font-family: "Special Elite", system-ui;
   font-weight: 400;
   font-size: 40px;
-  margin-top: 40px;
+  margin-top: 3%;
 `;
 
 export const Roof = styled.div`
@@ -42,7 +42,7 @@ export const Roof = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0 5px 0;
+  margin: 3% 0 5px 0;
 
   & p {
     font-family: "Special Elite", system-ui;
@@ -131,7 +131,7 @@ export const Base = styled.button`
   }
 
   &:active {
-    background: url("${BackgroundBase}");
+    background: url("${BackgroundBase1}");
     background-size: 100% 100%;
     opacity: 0.6;
     transition: 0.5s;
@@ -191,4 +191,13 @@ export const ButtonModal = styled.button`
   top: 20px;
   right: 30px;
 
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 0.4;
+  }
 `;
+
+

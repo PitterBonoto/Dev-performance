@@ -11,7 +11,7 @@ import {
   Button,
   Citation,
   ContainerCitation,
-  ImgEstudo,
+  ImgSaude,
   ContainerItensToDoList,
   Input,
   ButtonTodo,
@@ -25,17 +25,26 @@ import {
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
-import ImgEstudoMot from "../../assets/Estudos.png";
+import ImgSaudeExerc from "../../assets/ginastica.png";
 
+/* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Trash2 } from "lucide-react";
 
 import { Paragraph } from "../../components/P";
+import { PercProgress } from "../../components/PercProgress";
 
-function Studies() {
+export function Health() {
+  const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([
+    { id: 692568869, title: "tareta 1", isComplete: true },
+    { id: 692568863, title: "tarefa 2", isComplete: false },
+    { id: 692568861, title: "tarefa 3", isComplete: false },
+  ]);
+
+  const [percentageComplete, setPercentageComplete] = useState("");
 
   function handleCreateTask() {
     if (task === "") {
@@ -44,7 +53,9 @@ function Studies() {
       const n1 = 987654321;
       const idRandon = (num) => Math.floor(Math.random() * num);
       const newTask = { id: idRandon(n1), title: task, isComplete: false };
+      //console.log(newTask);
       setTasks([...tasks, newTask]);
+      //console.log(newTask);
       setTask("");
     }
   }
@@ -57,7 +68,7 @@ function Studies() {
       return task;
     });
 
-    taskComplete.find(
+    let validIsComplete = taskComplete.find(
       (item) =>
         item.isComplete === true &&
         toast.success(
@@ -65,10 +76,12 @@ function Studies() {
         )
     );
 
+    //console.log(taskComplete);
     setTasks(taskComplete);
   }
 
   function handleTaksDelete(id) {
+    //alert("apagar task");
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
@@ -78,8 +91,21 @@ function Studies() {
     }
   }
 
-  const navigate = useNavigate();
+  function progressBar() {
+    const tasksTrue = tasks.filter((task) => {
+      if (task.isComplete === true) {
+        return task;
+      }
+    });
 
+    const percentageComplete = (tasksTrue.length / tasks.length) * 100;
+    //setPercentageComplete(percentageComplete.toFixed(2));
+    return percentageComplete.toFixed(2);
+    //return percentageComplete.toFixed(2);
+  }
+  const statusBar = progressBar();
+
+  const navigate = useNavigate();
   function GoToHome() {
     navigate("/Home");
   }
@@ -87,82 +113,54 @@ function Studies() {
   return (
     <ContainerPrincipal>
       <ToastContainer />
+
       <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
       <ContainerItensPrincipal>
         <ContainerItens>
-          <TitleCard>Deixe de lado a procrastinação</TitleCard>
+          <TitleCard>Melhore Seu Sono</TitleCard>
           <ListaCard>
-            <li>
-              Estabeleça uma rotina para ter disciplina para estudar sozinho.
-            </li>
-            <li>Mantenha-se focado durante as aulas online.</li>
-            <li>Tenha disciplina para estudar sozinho.</li>
-            <li>Faça um planejamento diário ou semanal.</li>
-            <li>Crie um planejamento que seja possível de ser cumprido.</li>
-            <li>Faça pausas, o ócio também é criativo.</li>
-            <li>
-              Crie mapas mentais, é uma forma de anotar o que se estudou e poder
-              relembrar com palavras chave.
-            </li>
-            <li>
-              Faça pausas de 10 minutos a cada 1 hora de estudo ou trabalho.
-            </li>
-            <li>
-              Use uma ferramenta para te ajudar : aplicativos, planilhas ou
-              agenda.
-            </li>
-            <li>Registre seu desempenho, tenha um tempo bpara você.</li>
+            <li>Trate o sono como prioridade na sua rotina.</li>
+            <li>Estabeleça um cronograma do sono.</li>
+            <li>Exponha-se à luz solar, ao acordar.</li>
+            <li>Pratique exercícios físicos.</li>
+            <li>Considere tirar um cochilo diário.</li>
+            <li>Liste suas pendências ao encerrar o expediente.</li>
+            <li>Abandone as telas duas horas antes de dormir.</li>
+            <li>Faça uma refeição leve no início da noite.</li>
+            <li>Estabeleça um ritual do sono, com preparação do ambiente.</li>
+            <li>Busque a melhor posição para dormir.</li>
           </ListaCard>
-          <Button>Como Estudar</Button>
+          <Button>Melhore seu sono</Button>
         </ContainerItens>
 
         <ContainerItens>
-          <TitleCard>Metodo Pomodoro</TitleCard>
+          <TitleCard>Cuide da sua saúde</TitleCard>
           <ListaCard>
-            <li>
-              Planejamento: Faça uma lista com todas as tarefas que você precisa
-              executar naquele dia.
-            </li>
-            <li>
-              Foco: Qualquer distração, por menor que seja, pode prejudicar sua
-              produtividade.
-            </li>
-            <li>
-              Trabalho: Escolha sua primeira tarefa, ajuste o seu cronômetro
-              para 25 minutos, aperte o play e foco total.
-            </li>
-            <li>
-              Pausa curta: Quando o seu cronômetro apitar avisando que os 25
-              minutos programados já terminaram, você deverá parar tudo o que
-              está fazendo e se afastar da sua mesa por 5 minutos.
-            </li>
-            <li>
-              De volta aos trabalhos: Após essa primeira pausa, você retornará
-              às suas tarefas e repetirá esse ciclo por mais três sessões de 25
-              minutos.
-            </li>
-            <li>
-              Pausa longa: Ao término das quatro sessões de 25 minutos, você
-              poderá fazer uma pausa maior, de 20 a 30 minutos.
-            </li>
+            <li>Comece a praticar atividade física aos poucos.</li>
+            <li>Não espere a motivação, seja proativo.</li>
+            <li>Registre as suas conquistas do dia a dia.</li>
+            <li>Faça atividade física com consistência.</li>
+            <li>Saiba por que você está fazendo exercícios.</li>
+            <li>Leve seu pet no início.</li>
+            <li>Procure algo que você goste muito ou admira.</li>
+            <li>Ouça músicas que gosta durante o exercício.</li>
+            <li>Tenha uma companhia.</li>
+            <li>Participe de eventos.</li>
           </ListaCard>
-          <Button>Aplique o metodo pomodoro</Button>
+          <Button>Motive-se</Button>
         </ContainerItens>
 
         <ContainerItensToDoList>
           <TitleCard>Minhas Tarefas</TitleCard>
           <LabelTodo>Criar tarefa</LabelTodo>
-
           <ContainerTodoListItens>
             <Input
               placeholder="digite a tarefa"
               value={task}
               onChange={(ev) => setTask(ev.target.value)}
             />
-
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
-
           {tasks.map((task) => (
             <TaskContainer key={task.id}>
               <CheckTitle>
@@ -184,19 +182,20 @@ function Studies() {
               </CheckTitle>
             </TaskContainer>
           ))}
+          <PercProgress percBar={statusBar} />
+          valor Perc: {statusBar}
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
 
       <ContainerCitation>
         <Citation>
-          "Por maior que seja o seu cansaço, nunca deixe de estudar! Estudar é
-          um privilégio e só o seu esforço pessoal te levará a conhecer pessoas
-          e mundos que os acomodados jamais conhecerão!"
+          "Amanhã vou ter orgulho da minha versão de hoje: uma pessoa guerreira
+          que não deixa o cansaço ganhar da força de vontade"
         </Citation>
-        <ImgEstudo alt="imagem-estudos" src={ImgEstudoMot} />
+        <ImgSaude alt="imagem-ginastica" src={ImgSaudeExerc} />
       </ContainerCitation>
     </ContainerPrincipal>
   );
 }
 
-export default Studies;
+//export default Health;

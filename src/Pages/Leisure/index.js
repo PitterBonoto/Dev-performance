@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import Modal from "react-modal";
+import "./modalstyles.css";
 
 import {
   ContainerPrincipal,
+  Nav,
   Logo,
   Title,
+  ButtonBack,
   ContainerItensPrincipal,
   ContainerItens,
   TitleCard,
@@ -13,7 +17,7 @@ import {
   Button,
   Citation,
   ContainerCitation,
-  ImgLazer,
+  ImgSaude,
   ContainerItensToDoList,
   ContainerTitleToDoList,
   ProgressValue,
@@ -23,23 +27,35 @@ import {
   ButtonTodo,
   LabelTodo,
   ContainerTodoListItens,
+  ContainerTasks,
   TaskContainer,
   CheckTitle,
   CheckBoxContainer,
   InputCheck,
   TrashStyle,
+  ContainerModal,
+  ContainerModalText,
+  TitleModal,
+  CaptionModal,
+  ParagraphModal,
+  ListModal,
+  VideoModal,
+  ButtonModal,
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
-import ImgLazerFam from "../../assets/Lazer.png";
+import ImgSaudeExerc from "../../assets/Lazer.png";
+import VideoModal1 from "../../assets/video-teste.mp4";
 
+/* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Trash2 } from "lucide-react";
 
 import { Paragraph } from "../../components/P";
 
-function Leisure() {
+function Health() {
+  //const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -149,62 +165,51 @@ function Leisure() {
   }
   const colorBar = colorProgress();
 
+  /*----------------------MODAL-------------------------- */
+
+  /* MOODAL1 */
+  Modal.setAppElement("#root");
+  const [modalIsOpen1, SetModalIsOpen1] = useState(false);
+
+  function openModal1() {
+    SetModalIsOpen1(true);
+  }
+
+  function closeModal1() {
+    SetModalIsOpen1(false);
+  }
+
+  /* MOODAL2 */
+  const [modalIsOpen2, SetModalIsOpen2] = useState(false);
+
+  function openModal2() {
+    SetModalIsOpen2(true);
+  }
+
+  function closeModal2() {
+    SetModalIsOpen2(false);
+  }
+
   return (
     <ContainerPrincipal>
       <ToastContainer />
-      <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
-      <Title>Lazer</Title>
+      <Logo alt="Logo" src={LogoImg} />
+      <Nav>
+        <Title>Lazer</Title>
+        <ButtonBack onClick={GoToHome}>Página inicial</ButtonBack>
+      </Nav>
       <ContainerItensPrincipal>
         <ContainerItens>
-          <TitleCard>Descanse o corpo e a mente</TitleCard>
+          <TitleCard>Tire um tempo para você e sua família!</TitleCard>
           <ListaCard>
-            <li>
-              Estabeleça uma rotina para ter disciplina para estudar sozinho.
-            </li>
-            <li>Mantenha-se focado durante as aulas online.</li>
-            <li>Tenha disciplina para estudar sozinho.</li>
-            <li>Faça um planejamento diário ou semanal.</li>
-            <li>Crie um planejamento que seja possível de ser cumprido.</li>
-            <li>Faça pausas, o ócio também é criativo.</li>
-            <li>
-              Faça pausas de 10 minutos a cada 1 hora de estudo ou trabalho.
-            </li>
-            <li>
-              Use uma ferramenta para te ajudar : aplicativos, planilhas ou
-              agenda.
-            </li>
-            <li>Registre seu desempenho, tenha um tempo bpara você.</li>
+            <Button onClick={openModal1}>Descanso e Pausa</Button>
+            <Button onClick={openModal2}>Tempo de qualidade</Button>
           </ListaCard>
-          <Button>Descansar é importante</Button>
-        </ContainerItens>
-
-        <ContainerItens>
-          <TitleCard>Tire um tempo para familia</TitleCard>
-          <ListaCard>
-            <li>
-              Planejamento: Faça uma lista com todas as tarefas que você precisa
-              executar naquele dia.
-            </li>
-            <li>
-              Foco: Qualquer distração, por menor que seja, pode prejudicar sua
-              produtividade.
-            </li>
-            <li>
-              Trabalho: Escolha sua primeira tarefa, ajuste o seu cronômetro
-              para 25 minutos, aperte o play e foco total.
-            </li>
-            <li>
-              Pausa longa: Ao término das quatro sessões de 25 minutos, você
-              poderá fazer uma pausa maior, de 20 a 30 minutos.
-            </li>
-          </ListaCard>
-          <Button>Curta a familia e a você mesmo</Button>
         </ContainerItens>
 
         <ContainerItensToDoList>
           <ContainerTitleToDoList>
             <TitleCard>Minhas Tarefas</TitleCard>
-
             <ProgressExt>
               <ProgressInt
                 style={{ width: barStatus + "%", background: colorBar }}
@@ -212,52 +217,98 @@ function Leisure() {
               <ProgressValue>{barStatusValue}%</ProgressValue>
             </ProgressExt>
           </ContainerTitleToDoList>
-
           <LabelTodo>Criar tarefa</LabelTodo>
-
           <ContainerTodoListItens>
             <Input
               placeholder="digite a tarefa"
               value={task}
               onChange={(ev) => setTask(ev.target.value)}
             />
-
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
-
-          {tasks.map((task) => (
-            <TaskContainer key={task.id}>
-              <CheckTitle>
-                <CheckBoxContainer>
-                  <InputCheck
-                    type="checkbox"
-                    onClick={() => handleTaksCompletation(task._id)}
-                  />
-                  <Paragraph isTaskCompleted={task.isComplete}>
-                    {task.title}
-                  </Paragraph>
-                </CheckBoxContainer>
-                <TrashStyle>
-                  <Trash2
-                    onClick={() => handleTaksDelete(task._id)}
-                    style={{ color: " #ff0000" }}
-                  />
-                </TrashStyle>
-              </CheckTitle>
-            </TaskContainer>
-          ))}
+          <ContainerTasks>
+            {tasks.map((task) => (
+              <TaskContainer key={task.id}>
+                <CheckTitle>
+                  <CheckBoxContainer>
+                    <InputCheck
+                      type="checkbox"
+                      onClick={() => handleTaksCompletation(task._id)}
+                    />
+                    <Paragraph isTaskCompleted={task.isComplete}>
+                      {task.title}
+                    </Paragraph>
+                  </CheckBoxContainer>
+                  <TrashStyle>
+                    <Trash2
+                      onClick={() => handleTaksDelete(task._id)}
+                      style={{ color: " #ff0000" }}
+                    />
+                  </TrashStyle>
+                </CheckTitle>
+              </TaskContainer>
+            ))}
+          </ContainerTasks>
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
+
       <ContainerCitation>
         <Citation>
-          "Relaxe a mente, diminua a intensidade dos seus pensamentos. Equilibre
+        "Relaxe a mente, diminua a intensidade dos seus pensamentos. Equilibre
           a sua saúde mental. Viva e curta o seu momento de tranquilidade e
           alegria."
         </Citation>
-        <ImgLazer alt="imagem-lazer" src={ImgLazerFam} />
+        <ImgSaude alt="imagem-ginastica" src={ImgSaudeExerc} />
       </ContainerCitation>
+
+      <Modal
+        isOpen={modalIsOpen1}
+        onRequestClose={closeModal1}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <ContainerModal>
+          <ContainerModalText>
+            <TitleModal>Descanso e Pausas</TitleModal>
+            <ParagraphModal>
+              Ter pausas e descanso é fundamental para um bom funcionamento do
+              cérebro e do corpo humano. Descanso também é produtividade. Então
+              planeje o descanso na sua rotina e seja gentil quando seu corpo
+              pedir uma pausa. Gerencia com sabedoria o seu tempo e descanso.
+              <br />
+              <br />
+              Além disso, o descanso favorece a recuperação da memoria e
+              melhoria das funções executivas, atenção e concentração.
+            </ParagraphModal>
+          </ContainerModalText>
+          <VideoModal src={VideoModal1} controls></VideoModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal1}>Fechar</ButtonModal>
+      </Modal>
+
+      <Modal
+        isOpen={modalIsOpen2}
+        onRequestClose={closeModal2}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <ContainerModal>
+          <ContainerModalText>
+            <TitleModal>Tempo de qualidade</TitleModal>
+            <ParagraphModal>
+              Cuidar da gente e dos nossos também é importante. Nessa jornada,
+              não negligencie você e os seus. Passe tempo de qualidade com você
+              mesmo e com a sua família.
+            </ParagraphModal>
+          </ContainerModalText>
+          <VideoModal src={VideoModal1} controls></VideoModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal2}>Fechar</ButtonModal>
+      </Modal>
     </ContainerPrincipal>
   );
 }
 
-export default Leisure;
+export default Health;

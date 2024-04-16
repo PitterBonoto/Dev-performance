@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import Modal from "react-modal";
+import "./modalstyles.css";
 
 import {
   ContainerPrincipal,
+  Nav,
   Logo,
+  Title,
+  ButtonBack,
   ContainerItensPrincipal,
   ContainerItens,
   TitleCard,
@@ -12,7 +17,7 @@ import {
   Button,
   Citation,
   ContainerCitation,
-  ImgEstudo,
+  ImgSaude,
   ContainerItensToDoList,
   ContainerTitleToDoList,
   ProgressValue,
@@ -22,23 +27,35 @@ import {
   ButtonTodo,
   LabelTodo,
   ContainerTodoListItens,
+  ContainerTasks,
   TaskContainer,
   CheckTitle,
   CheckBoxContainer,
   InputCheck,
   TrashStyle,
+  ContainerModal,
+  ContainerModalText,
+  TitleModal,
+  CaptionModal,
+  ParagraphModal,
+  ListModal,
+  VideoModal,
+  ButtonModal,
 } from "./styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
-import ImgEstudoMot from "../../assets/Estudos.png";
+import ImgSaudeExerc from "../../assets/Estudos.png";
+import VideoModal1 from "../../assets/video-teste.mp4";
 
+/* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Trash2 } from "lucide-react";
 
 import { Paragraph } from "../../components/P";
 
-function Studies() {
+function Health() {
+  //const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -148,75 +165,63 @@ function Studies() {
   }
   const colorBar = colorProgress();
 
+  /*----------------------MODAL-------------------------- */
+
+  /* MOODAL1 */
+  Modal.setAppElement("#root");
+  const [modalIsOpen1, SetModalIsOpen1] = useState(false);
+
+  function openModal1() {
+    SetModalIsOpen1(true);
+  }
+
+  function closeModal1() {
+    SetModalIsOpen1(false);
+  }
+
+  /* MOODAL2 */
+  const [modalIsOpen2, SetModalIsOpen2] = useState(false);
+
+  function openModal2() {
+    SetModalIsOpen2(true);
+  }
+
+  function closeModal2() {
+    SetModalIsOpen2(false);
+  }
+
+  /* MOODAL3 */
+  const [modalIsOpen3, SetModalIsOpen3] = useState(false);
+
+  function openModal3() {
+    SetModalIsOpen3(true);
+  }
+
+  function closeModal3() {
+    SetModalIsOpen3(false);
+  }
+
   return (
     <ContainerPrincipal>
       <ToastContainer />
-      <Logo alt="Logo" src={LogoImg} onClick={GoToHome} />
+      <Logo alt="Logo" src={LogoImg} />
+      <Nav>
+        <Title>Estudos</Title>
+        <ButtonBack onClick={GoToHome}>Página inicial</ButtonBack>
+      </Nav>
       <ContainerItensPrincipal>
         <ContainerItens>
-          <TitleCard>Deixe de lado a procrastinação</TitleCard>
+          <TitleCard>Algumas dicas para te ajudar com os estudos:</TitleCard>
           <ListaCard>
-            <li>
-              Estabeleça uma rotina para ter disciplina para estudar sozinho.
-            </li>
-            <li>Mantenha-se focado durante as aulas online.</li>
-            <li>Tenha disciplina para estudar sozinho.</li>
-            <li>Faça um planejamento diário ou semanal.</li>
-            <li>Crie um planejamento que seja possível de ser cumprido.</li>
-            <li>Faça pausas, o ócio também é criativo.</li>
-            <li>
-              Crie mapas mentais, é uma forma de anotar o que se estudou e poder
-              relembrar com palavras chave.
-            </li>
-            <li>
-              Faça pausas de 10 minutos a cada 1 hora de estudo ou trabalho.
-            </li>
-            <li>
-              Use uma ferramenta para te ajudar : aplicativos, planilhas ou
-              agenda.
-            </li>
-            <li>Registre seu desempenho, tenha um tempo bpara você.</li>
+            <Button onClick={openModal1}>Como estudar?</Button>
+            <Button onClick={openModal2}>Lidando com a Procrastinação</Button>
+            <Button onClick={openModal3}>Método Pomodoro</Button>
           </ListaCard>
-          <Button>Como Estudar</Button>
-        </ContainerItens>
-
-        <ContainerItens>
-          <TitleCard>Metodo Pomodoro</TitleCard>
-          <ListaCard>
-            <li>
-              Planejamento: Faça uma lista com todas as tarefas que você precisa
-              executar naquele dia.
-            </li>
-            <li>
-              Foco: Qualquer distração, por menor que seja, pode prejudicar sua
-              produtividade.
-            </li>
-            <li>
-              Trabalho: Escolha sua primeira tarefa, ajuste o seu cronômetro
-              para 25 minutos, aperte o play e foco total.
-            </li>
-            <li>
-              Pausa curta: Quando o seu cronômetro apitar avisando que os 25
-              minutos programados já terminaram, você deverá parar tudo o que
-              está fazendo e se afastar da sua mesa por 5 minutos.
-            </li>
-            <li>
-              De volta aos trabalhos: Após essa primeira pausa, você retornará
-              às suas tarefas e repetirá esse ciclo por mais três sessões de 25
-              minutos.
-            </li>
-            <li>
-              Pausa longa: Ao término das quatro sessões de 25 minutos, você
-              poderá fazer uma pausa maior, de 20 a 30 minutos.
-            </li>
-          </ListaCard>
-          <Button>Aplique o metodo pomodoro</Button>
         </ContainerItens>
 
         <ContainerItensToDoList>
           <ContainerTitleToDoList>
             <TitleCard>Minhas Tarefas</TitleCard>
-
             <ProgressExt>
               <ProgressInt
                 style={{ width: barStatus + "%", background: colorBar }}
@@ -224,40 +229,38 @@ function Studies() {
               <ProgressValue>{barStatusValue}%</ProgressValue>
             </ProgressExt>
           </ContainerTitleToDoList>
-
           <LabelTodo>Criar tarefa</LabelTodo>
-
           <ContainerTodoListItens>
             <Input
               placeholder="digite a tarefa"
               value={task}
               onChange={(ev) => setTask(ev.target.value)}
             />
-
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
-
-          {tasks.map((task) => (
-            <TaskContainer key={task.id}>
-              <CheckTitle>
-                <CheckBoxContainer>
-                  <InputCheck
-                    type="checkbox"
-                    onClick={() => handleTaksCompletation(task._id)}
-                  />
-                  <Paragraph isTaskCompleted={task.isComplete}>
-                    {task.title}
-                  </Paragraph>
-                </CheckBoxContainer>
-                <TrashStyle>
-                  <Trash2
-                    onClick={() => handleTaksDelete(task._id)}
-                    style={{ color: " #ff0000" }}
-                  />
-                </TrashStyle>
-              </CheckTitle>
-            </TaskContainer>
-          ))}
+          <ContainerTasks>
+            {tasks.map((task) => (
+              <TaskContainer key={task.id}>
+                <CheckTitle>
+                  <CheckBoxContainer>
+                    <InputCheck
+                      type="checkbox"
+                      onClick={() => handleTaksCompletation(task._id)}
+                    />
+                    <Paragraph isTaskCompleted={task.isComplete}>
+                      {task.title}
+                    </Paragraph>
+                  </CheckBoxContainer>
+                  <TrashStyle>
+                    <Trash2
+                      onClick={() => handleTaksDelete(task._id)}
+                      style={{ color: " #ff0000" }}
+                    />
+                  </TrashStyle>
+                </CheckTitle>
+              </TaskContainer>
+            ))}
+          </ContainerTasks>
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
 
@@ -267,10 +270,100 @@ function Studies() {
           um privilégio e só o seu esforço pessoal te levará a conhecer pessoas
           e mundos que os acomodados jamais conhecerão!"
         </Citation>
-        <ImgEstudo alt="imagem-estudos" src={ImgEstudoMot} />
+        <ImgSaude alt="imagem-ginastica" src={ImgSaudeExerc} />
       </ContainerCitation>
+
+      <Modal
+        isOpen={modalIsOpen1}
+        onRequestClose={closeModal1}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <ContainerModal>
+          <ContainerModalText>
+            <TitleModal>Como estudar?</TitleModal>
+            <ParagraphModal>
+              DEFINA UMA META: Descreva aqui, de forma clara e objetivo qual seu
+              objetivo atual relacionado a área de estudos (ex.: terminar modulo
+              I, aprender linguagem X, curso de Inglês, etc.)
+              <br />
+              <br />
+              TORNANDO A META POSSÍVEL: Metas pequenas são mais fáceis de serem
+              atingidas. Agora desmembre a sua meta principal em pequenas metas
+              que podem ser executadas em até 25 minutos.
+              <br />
+              <br />
+              AÇÃO: Agora que a sua meta está desmembrada ela se torna mais
+              fácil de ser executada, planeje sua semana e preencha seu TO-DO
+              list com os seus objetivos a serem cumpridos.
+            </ParagraphModal>
+          </ContainerModalText>
+          <VideoModal src={VideoModal1} controls></VideoModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal1}>Fechar</ButtonModal>
+      </Modal>
+
+      <Modal
+        isOpen={modalIsOpen2}
+        onRequestClose={closeModal2}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <ContainerModal>
+          <ContainerModalText>
+            <TitleModal>Lidando com a procrastinação.</TitleModal>
+            <ParagraphModal>
+              A procrastinação consiste no atraso voluntario de algo que precisa
+              ser feito.
+              <br />
+              <br />É importante se perguntar qual o motivo de estar adiando
+              aquela tarefa.
+              <br />
+              <br />
+              Você sente que não consegue? Você está achando que será difícil?
+              Você não ve o porque de se envolver naquela tarefa?
+              <br />
+              <br />
+              Questione os motivos que te fazem procrastinar e lembre-se de
+              diminuir o tamanho das tarefas para favorecer a execução delas.
+            </ParagraphModal>
+          </ContainerModalText>
+          <VideoModal src={VideoModal1} controls></VideoModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal2}>Fechar</ButtonModal>
+      </Modal>
+
+      <Modal
+        isOpen={modalIsOpen3}
+        onRequestClose={closeModal3}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <ContainerModal>
+          <ContainerModalText>
+            <TitleModal>Metodo Pomodoro.</TitleModal>
+            <ParagraphModal>
+              Para ajudar a lidar com a falta de foco e a dificuldade de se
+              engajar nas tarefas sugerimos o método pomodoro.
+              <br />
+              <br />O método pomodoro é técnica de gerenciamento de tempo para
+              favorecer o estudo e/ou trabalho focado. Planeje seus estudos e/ou
+              trabalho em blocos de 25 minutos de dedicação completa a tarefa
+              seguidos de 5 minutos de intervalo livres. Após 4 intervalos
+              consecutivos faça um intervalo mais longo para retornar os
+              estudos. Dessa forma, você terá previsibilidade de descanso e
+              poderá gerenciar seu tempo melhor.
+            </ParagraphModal>
+          </ContainerModalText>
+          <VideoModal src={VideoModal1} controls></VideoModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal3}>Fechar</ButtonModal>
+      </Modal>
     </ContainerPrincipal>
   );
 }
 
-export default Studies;
+export default Health;

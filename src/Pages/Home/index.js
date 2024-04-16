@@ -52,7 +52,7 @@ function App() {
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
-      <Title>Os pilares da Produtividade:</Title>
+      <Title>Os pilares da Produtividade</Title>
       <Roof>
         <p>SUCESSO</p>
       </Roof>
