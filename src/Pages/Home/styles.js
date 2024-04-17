@@ -18,11 +18,16 @@ export const Container = styled.div`
 
 export const Logo = styled.img`
   width: 200px;
-  margin-bottom: 100px;
   position: absolute;
   left: 20px;
   top: 20px;
   filter: drop-shadow(1px 1px 5px #000000);
+
+  @media only screen and (max-width: 767px) {
+    width: 130px;
+    left: 15px;
+    top: 15px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -30,6 +35,37 @@ export const Title = styled.h1`
   font-weight: 400;
   font-size: 40px;
   margin-top: 3%;
+
+  @media only screen and (max-width: 767px) {
+    margin-top: 140px;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-top: 140px;
+}
+
+`;
+
+export const ExitButton = styled.button`
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  border-radius: 10px;
+  padding: 15px 30px;
+  border: none;
+  background-color: #ea4d2a;
+  color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
+  cursor: pointer;
+
+  @media only screen and (max-width: 767px) {
+    right: 15px;
+    top: 15px;
+    padding: 12px 25px;
+  }
 `;
 
 export const Roof = styled.div`
@@ -51,11 +87,22 @@ export const Roof = styled.div`
     margin-top: 15px;
     text-shadow: 1px 1px 5px #000000;
   }
+
+  @media only screen and (max-width: 767px) {
+    width: 360px;
+    height: 90px;
+    margin-top: 90px;
+
+    & p {
+      font-size: 22px;
+    }
+  }
 `;
 
 export const ContainerItens = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const CornerstoneContainer = styled.div`
@@ -63,6 +110,10 @@ export const CornerstoneContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (max-width: 767px) {
+    width: 120px;
+  }
 `;
 
 export const Cornerstone = styled.button`
@@ -94,6 +145,17 @@ export const Cornerstone = styled.button`
     opacity: 0.6;
     transition: 0.5s;
   }
+
+  @media only screen and (max-width: 767px) {
+    width: 50px;
+    height: 115px;
+
+    &:hover {
+      height: 117.5px;
+      width: 51.25px;
+      margin-top: -2.5px;
+    }
+  }
 `;
 
 export const CornestoneTitle = styled.h2`
@@ -105,6 +167,11 @@ export const CornestoneTitle = styled.h2`
   text-orientation: upright;
   letter-spacing: -2px;
   text-shadow: 2px 2px 5px #000000;
+
+  @media only screen and (max-width: 767px) {
+    font-size: 13px;
+    margin-top: 5px;
+  }
 `;
 
 export const Base = styled.button`
@@ -136,6 +203,18 @@ export const Base = styled.button`
     opacity: 0.6;
     transition: 0.5s;
   }
+
+  @media only screen and (max-width: 767px) {
+    width: 360px;
+    height: 35px;
+    margin-top: 2.5px;
+
+    &:hover {
+      height: 36.5px;
+      width: 362.5px;
+      margin-top: 1px;
+    }
+  }
 `;
 
 export const BaseTitle = styled.h2`
@@ -144,6 +223,11 @@ export const BaseTitle = styled.h2`
   font-weight: 700;
   text-shadow: 1px 1px 5px #000000;
   margin-top: 30px;
+
+  @media only screen and (max-width: 767px) {
+    font-size: 13px;
+    margin-top: 15px;
+  }
 `;
 
 export const ContainerModal = styled.div`
@@ -154,6 +238,11 @@ export const ContainerModal = styled.div`
   justify-content: center;
   max-width: 100%;
   max-height: 100%;
+
+  @media only screen and (max-width: 1023px) {
+  gap: 10px;
+  width: 90%;
+}
 `;
 
 export const TitleModal = styled.h1`
@@ -161,11 +250,17 @@ export const TitleModal = styled.h1`
   font-size: 32px;
   color: #ea4d2a;
   text-shadow: 1px 1px 5px #000000;
+
+  @media only screen and (max-width: 1023px) {
+  margin-top: 15px;
+}
 `;
 
 export const CaptionModal = styled.h4`
   font-family: "Special Elite", system-ui;
-  font-size: 22px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
 `;
 
 export const ParagraphModal = styled.p`
@@ -177,6 +272,15 @@ export const ParagraphModal = styled.p`
 export const ListModal = styled.ul`
   color: #2c2b2b;
   font-size: 17px;
+
+@media only screen and (max-width: 1023px) {
+  overflow: auto;
+  &::-webkit-scrollbar {
+      display: none;
+    }
+}
+
+
 `;
 export const ButtonModal = styled.button`
   border-radius: 10px;
@@ -198,6 +302,15 @@ export const ButtonModal = styled.button`
   &:active {
     opacity: 0.4;
   }
+
+  @media only screen and (max-width: 1023px) {
+  position: absolute;
+  top: auto;
+  bottom: 10px;
+  right: 10px;
+  padding: 7px 10px;
+
+
+}
+
 `;
-
-

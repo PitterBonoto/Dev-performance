@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Modal from "react-modal";
-import "./modalstyles.css";
+import "../../components/Cornestone-pages/modalstyles.css";
+import { ContainerPrincipal } from "./styles"
 
 import {
-  ContainerPrincipal,
   Nav,
   Logo,
   Title,
@@ -36,12 +36,10 @@ import {
   ContainerModal,
   ContainerModalText,
   TitleModal,
-  CaptionModal,
   ParagraphModal,
-  ListModal,
   VideoModal,
   ButtonModal,
-} from "./styles";
+} from "../../components/Cornestone-pages/styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/Lazer.png";

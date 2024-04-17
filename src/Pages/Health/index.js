@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import Modal from "react-modal";
-import "./modalstyles.css";
+import "../../components/Cornestone-pages/modalstyles.css";
+import { ContainerPrincipal } from "./styles";
 
 import {
-  ContainerPrincipal,
   Nav,
   Logo,
   Title,
@@ -36,12 +36,11 @@ import {
   ContainerModal,
   ContainerModalText,
   TitleModal,
-  CaptionModal,
   ParagraphModal,
   ListModal,
   VideoModal,
   ButtonModal,
-} from "./styles";
+} from "../../components/Cornestone-pages/styles";
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
@@ -328,7 +327,7 @@ function Health() {
               <br />
               <br />
               Segue uma rotina de higiene do sono:
-            </ParagraphModal>
+            
             <ListModal>
               <li>
                 1 - É importante criar uma rotina de sono. Busque se levantar e
@@ -362,6 +361,7 @@ function Health() {
                 natural.
               </li>
             </ListModal>
+            </ParagraphModal>
           </ContainerModalText>
           <VideoModal src={VideoModal1} controls></VideoModal>
         </ContainerModal>

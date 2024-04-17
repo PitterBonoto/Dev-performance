@@ -18,7 +18,7 @@ import {
   Input,
   Button,
   Register,
-} from "./styles";
+} from "../../components/Login-pages/styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
       <ToastContainer />
       <Logo alt="Logo" src={Logo1} />
       <Welcome>
-        <WelcomeTitle>Uma Escalada Rumo à Alta Performance:</WelcomeTitle>
+        <WelcomeTitle>Uma Escalada Rumo à Alta Performance!</WelcomeTitle>
         <WelcomeTitle1>Desperte sua Produtividade!</WelcomeTitle1>
         <Quote>
           "A subida é árdua, mas a vista do topo vale a pena"<br></br>

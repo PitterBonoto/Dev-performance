@@ -5,8 +5,9 @@ import "./modalstyles.css";
 
 import {
   Container,
-  Title,
   Logo,
+  Title,
+  ExitButton,
   Roof,
   ContainerItens,
   CornerstoneContainer,
@@ -38,6 +39,10 @@ function App() {
     navigate("/Lazer");
   }
 
+  function GoToExit() {
+    navigate("/");
+  }
+
   Modal.setAppElement("#root");
   const [modalIsOpen, SetModalIsOpen] = useState(false);
 
@@ -53,33 +58,37 @@ function App() {
     <Container>
       <Logo alt="Logo" src={Logo1} />
       <Title>Os pilares da Produtividade</Title>
-      <Roof>
-        <p>SUCESSO</p>
-      </Roof>
+      <ExitButton onClick={GoToExit}>Sair</ExitButton>
 
-      <ContainerItens>
-        <CornerstoneContainer>
-          <Cornerstone onClick={GoToHealth}>
-            <CornestoneTitle>SAÚDE</CornestoneTitle>
-          </Cornerstone>
-        </CornerstoneContainer>
+      
+        <Roof>
+          <p>SUCESSO</p>
+        </Roof>
 
-        <CornerstoneContainer>
-          <Cornerstone onClick={GoToStudies}>
-            <CornestoneTitle>ESTUDOS</CornestoneTitle>
-          </Cornerstone>
-        </CornerstoneContainer>
+        <ContainerItens>
+          <CornerstoneContainer>
+            <Cornerstone onClick={GoToHealth}>
+              <CornestoneTitle>SAÚDE</CornestoneTitle>
+            </Cornerstone>
+          </CornerstoneContainer>
 
-        <CornerstoneContainer>
-          <Cornerstone onClick={GoToLeisure}>
-            <CornestoneTitle>LAZER</CornestoneTitle>
-          </Cornerstone>
-        </CornerstoneContainer>
-      </ContainerItens>
+          <CornerstoneContainer>
+            <Cornerstone onClick={GoToStudies}>
+              <CornestoneTitle>ESTUDOS</CornestoneTitle>
+            </Cornerstone>
+          </CornerstoneContainer>
 
-      <Base onClick={openModal}>
-        <BaseTitle>COMECE POR AQUI</BaseTitle>
-      </Base>
+          <CornerstoneContainer>
+            <Cornerstone onClick={GoToLeisure}>
+              <CornestoneTitle>LAZER</CornestoneTitle>
+            </Cornerstone>
+          </CornerstoneContainer>
+        </ContainerItens>
+
+        <Base onClick={openModal}>
+          <BaseTitle>COMECE POR AQUI</BaseTitle>
+        </Base>
+     
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -102,6 +111,7 @@ function App() {
               jornada. Saber o seu porquê e o seu por quem irá te ajudar a se
               manter firme nessa caminhada que terá altos e baixos.
             </li>
+            <br/>
             <li>
               Tenha uma META clara em relação aos seus objetivos. O que você
               quer? O que você precisa fazer para chegar lá? Como você irá
@@ -109,6 +119,7 @@ function App() {
               gerenciar. Crie uma meta razoável e à medida que alcançar seus
               objetivos, trace outros objetivos para você.
             </li>
+            <br/>
             <li>
               Gerencie suas frustrações: VOCÊ VAI SE FRUSTRAR! Sua jornada será
               longa e pelo caminho haverá dificuldades e frustrações. Fique
@@ -120,6 +131,7 @@ function App() {
               em movimento é melhor que ficar parado. Volte o mais breve
               possível.
             </li>
+            <br/>
             <li>
               AJUSTE SUAS EXPECTATIVAS: fique atento as expectativas que você
               tem nesse processo. Sucesso não é sobre execução perfeita, tempo
