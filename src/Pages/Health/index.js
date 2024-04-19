@@ -54,7 +54,6 @@ import { Trash2 } from "lucide-react";
 import { Paragraph } from "../../components/P";
 
 function Health() {
-  //const [complete, setComplete] = useState(false);
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -63,6 +62,7 @@ function Health() {
       /*id: v4(),*/
       title: task,
       isComplete: false,
+      category: "saude",
     });
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
@@ -79,29 +79,66 @@ function Health() {
   useEffect(() => {
     async function fetchTasks() {
       const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-      setTasks(newTask);
+      const newTaskSearch = newTask.filter((task) => {
+        if (task.category === "saude") {
+          return task;
+        }
+        return 0;
+      });
+      //console.log(newTask);
+      //console.log(newTaskSearch);
+      setTasks(newTaskSearch);
     }
     fetchTasks();
   }, []);
 
-  function handleTaksCompletation(id) {
-    const taskComplete = tasks.map((task) => {
-      if (task._id === id) {
-        return { ...task, isComplete: !task.isComplete };
-      }
-      return task;
-    });
+  async function handleUpdateTask(id) {
+    //const taskComplete = tasks.map((taskItem) => {
+    const taskUpdate = tasks.filter((taskItem) => taskItem._id === id);
+    //console.log(taskUpdate[0]._id);
+    if (taskUpdate[0]._id === id && taskUpdate[0].status === false) {
+      let taskIsTrue = !taskUpdate[0].status;
+      /*const data: newTask =*/ await axios.put(
+        `http://localhost:3001/tasks/${id}`,
+        {
+          status: taskIsTrue,
+        }
+      );
+      //console.log(newTask);
 
-    taskComplete.find(
-      (item) =>
-        item.isComplete === true &&
-        toast.success(
-          "😎 Você foi muito bem, concluiu sua tarefa, continue assim 😎 !!!"
-        )
-    );
+      const { data: newTaskGet } = await axios.get(
+        "http://localhost:3001/tasks"
+      );
+      const newTaskSearch = newTaskGet.filter((task) => {
+        if (task.category === "saude") {
+          return task;
+        }
+        return 0;
+      });
 
-    //console.log(taskComplete);
-    setTasks(taskComplete);
+      return setTasks(newTaskSearch);
+      //return "ok";
+    } else {
+      let taskIsTrue = !taskUpdate[0].status;
+      /*const { data: newTask } =*/ await axios.put(
+        `http://localhost:3001/tasks/${id}`,
+        {
+          status: taskIsTrue,
+        }
+      );
+      //console.log(newTask);
+
+      const { data: newTaskGet } = await axios.get(
+        "http://localhost:3001/tasks"
+      );
+      const newTaskSearch = newTaskGet.filter((task) => {
+        if (task.category === "saude") {
+          return task;
+        }
+        return 0;
+      });
+      return setTasks(newTaskSearch);
+    }
   }
 
   async function handleTaksDelete(id) {
@@ -110,7 +147,7 @@ function Health() {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
       await axios.delete(`http://localhost:3001/tasks/${id}`);
-      const taskDelete = tasks.filter((task) => task.id !== id);
+      const taskDelete = tasks.filter((task) => task._id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
@@ -120,9 +157,10 @@ function Health() {
 
   function progressBar() {
     const tasksTrue = tasks.filter((task) => {
-      if (task.isComplete === true) {
+      if (task.status === true) {
         return task;
       }
+      return 0;
     });
 
     const percentageComplete = (tasksTrue.length / tasks.length) * 100;
@@ -139,12 +177,6 @@ function Health() {
   }
 
   const barStatusValue = valueBarStatus();
-
-  const navigate = useNavigate();
-
-  function GoToHome() {
-    navigate("/Home");
-  }
 
   function colorProgress() {
     let colorBar = "";
@@ -163,6 +195,12 @@ function Health() {
     return colorBar;
   }
   const colorBar = colorProgress();
+
+  const navigate = useNavigate();
+
+  function GoToHome() {
+    navigate("/Home");
+  }
 
   /*----------------------MODAL-------------------------- */
 
@@ -210,6 +248,7 @@ function Health() {
   function closeModal4() {
     SetModalIsOpen4(false);
   }
+
   return (
     <ContainerPrincipal>
       <ToastContainer />
@@ -249,27 +288,28 @@ function Health() {
             <ButtonTodo onClick={handleCreateTask}>Nova Tarefa</ButtonTodo>
           </ContainerTodoListItens>
           <ContainerTasks>
-          {tasks.map((task) => (
-            <TaskContainer key={task.id}>
-              <CheckTitle>
-                <CheckBoxContainer>
-                  <InputCheck
-                    type="checkbox"
-                    onClick={() => handleTaksCompletation(task._id)}
-                  />
-                  <Paragraph isTaskCompleted={task.isComplete}>
-                    {task.title}
-                  </Paragraph>
-                </CheckBoxContainer>
-                <TrashStyle>
-                  <Trash2
-                    onClick={() => handleTaksDelete(task._id)}
-                    style={{ color: " #ff0000" }}
-                  />
-                </TrashStyle>
-              </CheckTitle>
-            </TaskContainer>
-          ))}
+            {tasks.map((task) => (
+              <TaskContainer key={task.id}>
+                <CheckTitle>
+                  <CheckBoxContainer>
+                    <InputCheck
+                      type="checkbox"
+                      checked={task.status === true ? true : false}
+                      onClick={() => handleUpdateTask(task._id)}
+                    />
+                    <Paragraph isTaskCompleted={task.status}>
+                      {task.title}
+                    </Paragraph>
+                  </CheckBoxContainer>
+                  <TrashStyle>
+                    <Trash2
+                      onClick={() => handleTaksDelete(task._id)}
+                      style={{ color: " #ff0000" }}
+                    />
+                  </TrashStyle>
+                </CheckTitle>
+              </TaskContainer>
+            ))}
           </ContainerTasks>
         </ContainerItensToDoList>
       </ContainerItensPrincipal>
@@ -327,40 +367,39 @@ function Health() {
               <br />
               <br />
               Segue uma rotina de higiene do sono:
-            
-            <ListModal>
-              <li>
-                1 - É importante criar uma rotina de sono. Busque se levantar e
-                deitar todos os dias no mesmo horário, incluindo finais de
-                semana e feriados. Isso favorece o ajuste do ciclo circadiano.
-                Durma entre 7 a 9 horas.
-              </li>
-              <li>
-                2 - Evite o consumo de bebidas estimulantes e a base de cafeína
-                após as 15:00 e evite consumo de bebidas alcoólicas;
-              </li>
-              <li>3 - Não vá para cama a não ser que esteja com sono;</li>
-              <li>
-                4 - Crie um ambiente que induza o sono: próximo do horário de
-                dormir mantenha o ambiente mais escuro, com temperatura
-                agradável e mais silencioso;
-              </li>
-              <li>5 - Evite tirar sonecas durante o dia;</li>
-              <li>
-                6 - Reduza o consumo de alimentos pesados durante a noite e
-                controle a ingestão de líquidos;
-              </li>
-              <li>
-                7 - Crie uma ritual antes de dormir: se envolva em atividades
-                tranquilas e relaxantes antes de dormir, evite eletrônicos pelo
-                menos 30 minutos antes de se deitar;
-              </li>
-              <li>8 - Evite praticar atividades intensas antes de dormir;</li>
-              <li>
-                9 - Se exponha a luz natural: pela manhã se exponha a luz
-                natural.
-              </li>
-            </ListModal>
+              <ListModal>
+                <li>
+                  1 - É importante criar uma rotina de sono. Busque se levantar
+                  e deitar todos os dias no mesmo horário, incluindo finais de
+                  semana e feriados. Isso favorece o ajuste do ciclo circadiano.
+                  Durma entre 7 a 9 horas.
+                </li>
+                <li>
+                  2 - Evite o consumo de bebidas estimulantes e a base de
+                  cafeína após as 15:00 e evite consumo de bebidas alcoólicas;
+                </li>
+                <li>3 - Não vá para cama a não ser que esteja com sono;</li>
+                <li>
+                  4 - Crie um ambiente que induza o sono: próximo do horário de
+                  dormir mantenha o ambiente mais escuro, com temperatura
+                  agradável e mais silencioso;
+                </li>
+                <li>5 - Evite tirar sonecas durante o dia;</li>
+                <li>
+                  6 - Reduza o consumo de alimentos pesados durante a noite e
+                  controle a ingestão de líquidos;
+                </li>
+                <li>
+                  7 - Crie uma ritual antes de dormir: se envolva em atividades
+                  tranquilas e relaxantes antes de dormir, evite eletrônicos
+                  pelo menos 30 minutos antes de se deitar;
+                </li>
+                <li>8 - Evite praticar atividades intensas antes de dormir;</li>
+                <li>
+                  9 - Se exponha a luz natural: pela manhã se exponha a luz
+                  natural.
+                </li>
+              </ListModal>
             </ParagraphModal>
           </ContainerModalText>
           <VideoModal src={VideoModal1} controls></VideoModal>
@@ -412,7 +451,7 @@ function Health() {
               disposição, sono e atividades cognitivas.
               <br />
               <br />
-              Não se esqueça de cuidar da alimentação. 
+              Não se esqueça de cuidar da alimentação.
             </ParagraphModal>
           </ContainerModalText>
           <VideoModal src={VideoModal1} controls></VideoModal>

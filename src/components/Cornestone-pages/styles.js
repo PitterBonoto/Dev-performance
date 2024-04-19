@@ -328,9 +328,8 @@ export const ButtonTodo = styled.button`
   }
 
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  width: 40%;
-}
-
+    width: 40%;
+  }
 `;
 
 export const ContainerTodoListItens = styled.div`
@@ -404,6 +403,8 @@ export const InputCheck = styled.input`
   height: 20px;
   accent-color: #ea4d2a;
   margin-right: 5px;
+
+  /* color: ${(props) => (props.checked ? "#FFF" : "#555")}; */
 `;
 
 export const TrashStyle = styled.button`
@@ -469,7 +470,6 @@ export const ParagraphModal = styled.p`
   width: 90%;
 
   @media only screen and (max-width: 1023px) {
-
     overflow: auto;
     &::-webkit-scrollbar {
       display: none;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import Modal from "react-modal";
 import "../../components/Cornestone-pages/modalstyles.css";
-import { ContainerPrincipal } from "./styles"
+import { ContainerPrincipal } from "./styles";
 
 import {
   Nav,
@@ -52,8 +52,7 @@ import { Trash2 } from "lucide-react";
 
 import { Paragraph } from "../../components/P";
 
-function Health() {
-  //const [complete, setComplete] = useState(false);
+function Studies() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
@@ -62,6 +61,7 @@ function Health() {
       /*id: v4(),*/
       title: task,
       isComplete: false,
+      category: "estudos",
     });
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
@@ -78,29 +78,65 @@ function Health() {
   useEffect(() => {
     async function fetchTasks() {
       const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-      setTasks(newTask);
+      const newTaskSearch = newTask.filter((task) => {
+        if (task.category === "estudos") {
+          return task;
+        }
+        return 0;
+      });
+
+      setTasks(newTaskSearch);
     }
     fetchTasks();
   }, []);
 
-  function handleTaksCompletation(id) {
-    const taskComplete = tasks.map((task) => {
-      if (task._id === id) {
-        return { ...task, isComplete: !task.isComplete };
-      }
-      return task;
-    });
+  async function handleUpdateTask(id) {
+    //const taskComplete = tasks.map((taskItem) => {
+    const taskUpdate = tasks.filter((taskItem) => taskItem._id === id);
+    //console.log(taskUpdate[0]._id);
+    if (taskUpdate[0]._id === id && taskUpdate[0].status === false) {
+      let taskIsTrue = !taskUpdate[0].status;
+      /*const data: newTask =*/ await axios.put(
+        `http://localhost:3001/tasks/${id}`,
+        {
+          status: taskIsTrue,
+        }
+      );
+      //console.log(newTask);
 
-    taskComplete.find(
-      (item) =>
-        item.isComplete === true &&
-        toast.success(
-          "😎 Você foi muito bem, concluiu sua tarefa, continue assim 😎 !!!"
-        )
-    );
+      const { data: newTaskGet } = await axios.get(
+        "http://localhost:3001/tasks"
+      );
+      const newTaskSearch = newTaskGet.filter((task) => {
+        if (task.category === "estudos") {
+          return task;
+        }
+        return 0;
+      });
 
-    //console.log(taskComplete);
-    setTasks(taskComplete);
+      return setTasks(newTaskSearch);
+      //return "ok";
+    } else {
+      let taskIsTrue = !taskUpdate[0].status;
+      /*const { data: newTask } =*/ await axios.put(
+        `http://localhost:3001/tasks/${id}`,
+        {
+          status: taskIsTrue,
+        }
+      );
+      //console.log(newTask);
+
+      const { data: newTaskGet } = await axios.get(
+        "http://localhost:3001/tasks"
+      );
+      const newTaskSearch = newTaskGet.filter((task) => {
+        if (task.category === "estudos") {
+          return task;
+        }
+        return 0;
+      });
+      return setTasks(newTaskSearch);
+    }
   }
 
   async function handleTaksDelete(id) {
@@ -119,9 +155,10 @@ function Health() {
 
   function progressBar() {
     const tasksTrue = tasks.filter((task) => {
-      if (task.isComplete === true) {
+      if (task.status === true) {
         return task;
       }
+      return 0;
     });
 
     const percentageComplete = (tasksTrue.length / tasks.length) * 100;
@@ -243,9 +280,10 @@ function Health() {
                   <CheckBoxContainer>
                     <InputCheck
                       type="checkbox"
-                      onClick={() => handleTaksCompletation(task._id)}
+                      checked={task.status === true ? true : false}
+                      onClick={() => handleUpdateTask(task._id)}
                     />
-                    <Paragraph isTaskCompleted={task.isComplete}>
+                    <Paragraph isTaskCompleted={task.status}>
                       {task.title}
                     </Paragraph>
                   </CheckBoxContainer>
@@ -364,4 +402,4 @@ function Health() {
   );
 }
 
-export default Health;
+export default Studies;
