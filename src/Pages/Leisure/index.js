@@ -149,7 +149,13 @@ function Leisure() {
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
     const { data: newTask } = await axios.get("http://localhost:3001/tasks");
-    setTasks(newTask);
+    const newTaskSearch = newTask.filter((task) => {
+      if (task.category === "lazer") {
+        return task;
+      }
+      return 0;
+    });
+    setTasks(newTaskSearch);
   }
 
   function progressBar() {
