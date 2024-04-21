@@ -43,7 +43,7 @@ import {
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/Lazer.png";
-import VideoModal1 from "../../assets/video-teste.mp4";
+import VideoModalDescanso from "../../assets/video-descanso-pausa.mp4";
 
 /* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
@@ -242,7 +242,7 @@ function Leisure() {
         <ContainerItens>
           <TitleCard>Tire um tempo para você e sua família!</TitleCard>
           <ListaCard>
-            <Button onClick={openModal1}>Descanso e Pausa</Button>
+            <Button onClick={openModal1}>Se Recompense!</Button>
             <Button onClick={openModal2}>Tempo de qualidade</Button>
           </ListaCard>
         </ContainerItens>
@@ -311,19 +311,16 @@ function Leisure() {
       >
         <ContainerModal>
           <ContainerModalText>
-            <TitleModal>Descanso e Pausas</TitleModal>
+            <TitleModal>Se recompense!</TitleModal>
             <ParagraphModal>
-              Ter pausas e descanso é fundamental para um bom funcionamento do
-              cérebro e do corpo humano. Descanso também é produtividade. Então
-              planeje o descanso na sua rotina e seja gentil quando seu corpo
-              pedir uma pausa. Gerencia com sabedoria o seu tempo e descanso.
-              <br />
-              <br />
-              Além disso, o descanso favorece a recuperação da memoria e
-              melhoria das funções executivas, atenção e concentração.
+              É importante reconhecer e comemorar os progressos obtidos. A
+              medida que você atingir suas metas programe recompensas e
+              contemple seus resultados. Valorizar e reconhecer o progresso faz
+              parte da jornada. Programe recompensas variadas e com diferentes
+              graus de magnitude para as metas alcançadas.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
+          <VideoModal src={VideoModalDescanso} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal1}>Fechar</ButtonModal>
       </Modal>
@@ -339,12 +336,21 @@ function Leisure() {
           <ContainerModalText>
             <TitleModal>Tempo de qualidade</TitleModal>
             <ParagraphModal>
+              Ter pausas e descanso é fundamental para um bom funcionamento do
+              cérebro e do corpo humano. Descanso também é produtividade. Então
+              planeje o descanso na sua rotina e seja gentil quando seu corpo
+              pedir uma pausa. Gerencia com sabedoria o seu tempo e descanso.
+              <br />
+              <br />
+              Além disso, o descanso favorece a recuperação da memoria e
+              melhoria das funções executivas, atenção e concentração.
+              <br />
+              <br />
               Cuidar da gente e dos nossos também é importante. Nessa jornada,
               não negligencie você e os seus. Passe tempo de qualidade com você
               mesmo e com a sua família.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal2}>Fechar</ButtonModal>
       </Modal>

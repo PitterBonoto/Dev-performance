@@ -440,7 +440,6 @@ export const ContainerModalText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 50%;
   height: 100%;
 
   @media only screen and (max-width: 1023px) {
@@ -468,19 +467,19 @@ export const ParagraphModal = styled.p`
   font-weight: 600;
   font-size: 17px;
   width: 90%;
+  overflow: auto;
 
-  @media only screen and (max-width: 1023px) {
-    overflow: auto;
     &::-webkit-scrollbar {
       display: none;
-    }
-  }
+    } 
 `;
 
 export const ListModal = styled.ul`
   font-weight: 400;
   color: #2c2b2b;
   font-size: 17px;
+  margin-top: 10px;
+
 `;
 export const ButtonModal = styled.button`
   border-radius: 10px;

@@ -43,7 +43,10 @@ import {
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/Estudos.png";
-import VideoModal1 from "../../assets/video-teste.mp4";
+import VideoModalProcrastinacao from "../../assets/video-procrastinacao.mp4";
+import VideoModalComoEstudar from "../../assets/video-como-estudar.mp4";
+import VideoModalPlanejamento from "../../assets/video-planejamento.mp4";
+
 
 /* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
@@ -208,8 +211,20 @@ function Studies() {
 
   /*----------------------MODAL-------------------------- */
 
-  /* MOODAL1 */
+  /* MOODAL0 */
   Modal.setAppElement("#root");
+  const [modalIsOpen0, SetModalIsOpen0] = useState(false);
+
+  function openModal0() {
+    SetModalIsOpen0(true);
+  }
+
+  function closeModal0() {
+    SetModalIsOpen0(false);
+  }
+
+  /* MOODAL1 */
+
   const [modalIsOpen1, SetModalIsOpen1] = useState(false);
 
   function openModal1() {
@@ -254,6 +269,7 @@ function Studies() {
         <ContainerItens>
           <TitleCard>Algumas dicas para te ajudar com os estudos:</TitleCard>
           <ListaCard>
+            <Button onClick={openModal0}>Tenha um planejamento!</Button>
             <Button onClick={openModal1}>Como estudar?</Button>
             <Button onClick={openModal2}>Lidando com a Procrastinação</Button>
             <Button onClick={openModal3}>Método Pomodoro</Button>
@@ -316,6 +332,37 @@ function Studies() {
       </ContainerCitation>
 
       <Modal
+        isOpen={modalIsOpen0}
+        onRequestClose={closeModal0}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content"
+      >
+        <ContainerModal>
+          <ContainerModalText>
+            <TitleModal>Tenha um planejamento!</TitleModal>
+            <ParagraphModal>
+              DEFINA UMA META: Descreva aqui, de forma clara e objetivo qual seu
+              objetivo atual relacionado a área de estudos (ex.: terminar modulo
+              I, aprender linguagem X, curso de Inglês, etc.)
+              <br />
+              <br />
+              TORNANDO A META POSSÍVEL: Metas pequenas são mais fáceis de serem
+              atingidas. Agora desmembre a sua meta principal em pequenas metas
+              ajustadas a sua realidade.
+              <br />
+              <br />
+              AÇÃO: Agora que a sua meta está desmembrada ela se torna mais
+              fácil de ser executada, planeje sua semana e preencha seu TO-DO
+              list com os seus objetivos a serem cumpridos.
+            </ParagraphModal>
+          </ContainerModalText>
+          <VideoModal src={VideoModalPlanejamento} controls></VideoModal>
+        </ContainerModal>
+        <ButtonModal onClick={closeModal0}>Fechar</ButtonModal>
+      </Modal>
+
+      <Modal
         isOpen={modalIsOpen1}
         onRequestClose={closeModal1}
         contentLabel="Example Modal"
@@ -326,22 +373,20 @@ function Studies() {
           <ContainerModalText>
             <TitleModal>Como estudar?</TitleModal>
             <ParagraphModal>
-              DEFINA UMA META: Descreva aqui, de forma clara e objetivo qual seu
-              objetivo atual relacionado a área de estudos (ex.: terminar modulo
-              I, aprender linguagem X, curso de Inglês, etc.)
+              ESTUDE DE FORMA ATIVA: Aprendizagem ativa é estudar com um maior
+              envolvimento e profundidade. Faça anotações, discorra sobre o
+              assunto e tire dúvidas com seus partners, explique a alguém aquilo
+              que você aprendeu.
               <br />
               <br />
-              TORNANDO A META POSSÍVEL: Metas pequenas são mais fáceis de serem
-              atingidas. Agora desmembre a sua meta principal em pequenas metas
-              que podem ser executadas em até 25 minutos.
-              <br />
-              <br />
-              AÇÃO: Agora que a sua meta está desmembrada ela se torna mais
-              fácil de ser executada, planeje sua semana e preencha seu TO-DO
-              list com os seus objetivos a serem cumpridos.
+              PRATIQUE: A maneira mais eficaz de aprender a programar é
+              programando. Faça projetos, teste cada ferramenta que você estudou
+              sobre. Coloque o "DEDINHO NO TECLADO", as primeiras vezes você não
+              saberá direito o que fazer. Persista, erre, faça pesquisas até que
+              isso se torne comum para você.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
+          <VideoModal src={VideoModalComoEstudar} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal1}>Fechar</ButtonModal>
       </Modal>
@@ -372,7 +417,11 @@ function Studies() {
               diminuir o tamanho das tarefas para favorecer a execução delas.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
+          <VideoModal
+            src={VideoModalProcrastinacao}
+            controls
+            controlsList="nodownload"
+          ></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal2}>Fechar</ButtonModal>
       </Modal>
@@ -400,7 +449,6 @@ function Studies() {
               poderá gerenciar seu tempo melhor.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal3}>Fechar</ButtonModal>
       </Modal>

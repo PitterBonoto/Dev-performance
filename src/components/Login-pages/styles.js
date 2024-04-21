@@ -27,7 +27,7 @@ export const Welcome = styled.div`
 
   @media only screen and (max-width: 1023px) {
     text-align: center;
-    margin-top: 85px;
+    margin-top: 13vh;
     gap: 10px;
 }
 

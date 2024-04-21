@@ -44,7 +44,9 @@ import {
 
 import LogoImg from "../../assets/logo-dev-performance.png";
 import ImgSaudeExerc from "../../assets/ginastica.png";
-import VideoModal1 from "../../assets/video-teste.mp4";
+import VideoModalSono from "../../assets/video-sono.mp4";
+import VideoModalCorpo from "../../assets/video-corpo.mp4";
+import VideoModalAlimentacao from "../../assets/video-alimentacao.mp4";
 
 /* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
@@ -352,7 +354,6 @@ function Health() {
               alerta, desempenho cognitivo e humor.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal1}>Fechar</ButtonModal>
       </Modal>
@@ -408,7 +409,7 @@ function Health() {
               </ListModal>
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
+          <VideoModal src={VideoModalSono} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal2}>Fechar</ButtonModal>
       </Modal>
@@ -437,7 +438,7 @@ function Health() {
               momento de vida e busque praticar.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
+          <VideoModal src={VideoModalCorpo} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal3}>Fechar</ButtonModal>
       </Modal>
@@ -460,7 +461,7 @@ function Health() {
               Não se esqueça de cuidar da alimentação.
             </ParagraphModal>
           </ContainerModalText>
-          <VideoModal src={VideoModal1} controls></VideoModal>
+          <VideoModal src={VideoModalAlimentacao} controls></VideoModal>
         </ContainerModal>
         <ButtonModal onClick={closeModal4}>Fechar</ButtonModal>
       </Modal>
