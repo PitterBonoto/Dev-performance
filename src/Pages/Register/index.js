@@ -46,7 +46,8 @@ function App() {
     } else {
       //alert(password);
       const { data: newUser } = await axios.post(
-        "http://localhost:3001/users",
+        // "http://localhost:3001/users",
+        "https://project-hackton-react-api.vercel.app/users",
         {
           email: user,
           password: password,
