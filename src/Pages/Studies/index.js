@@ -47,7 +47,6 @@ import VideoModalProcrastinacao from "../../assets/video-procrastinacao.mp4";
 import VideoModalComoEstudar from "../../assets/video-como-estudar.mp4";
 import VideoModalPlanejamento from "../../assets/video-planejamento.mp4";
 
-
 /* trefas daqui até o return */
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -60,12 +59,16 @@ function Studies() {
   const [tasks, setTasks] = useState([]);
 
   async function handleCreateTask() {
-    const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
-      /*id: v4(),*/
-      title: task,
-      isComplete: false,
-      category: "estudos",
-    });
+    const { data: newTask } = await axios.post(
+      // "http://localhost:3001/tasks",
+      "https://project-hackton-react-api.vercel.app/tasks",
+      {
+        /*id: v4(),*/
+        title: task,
+        isComplete: false,
+        category: "estudos",
+      }
+    );
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
@@ -80,7 +83,9 @@ function Studies() {
 
   useEffect(() => {
     async function fetchTasks() {
-      const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+      const { data: newTask } = await axios.get(
+        /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
+      );
       const newTaskSearch = newTask.filter((task) => {
         if (task.category === "estudos") {
           return task;
@@ -100,7 +105,8 @@ function Studies() {
     if (taskUpdate[0]._id === id && taskUpdate[0].status === false) {
       let taskIsTrue = !taskUpdate[0].status;
       /*const data: newTask =*/ await axios.put(
-        `http://localhost:3001/tasks/${id}`,
+        // `http://localhost:3001/tasks/${id}`,
+        `https://project-hackton-react-api.vercel.app/tasks/${id}`,
         {
           status: taskIsTrue,
         }
@@ -108,7 +114,8 @@ function Studies() {
       //console.log(newTask);
 
       const { data: newTaskGet } = await axios.get(
-        "http://localhost:3001/tasks"
+        // "http://localhost:3001/tasks"
+        "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
         if (task.category === "estudos") {
@@ -122,7 +129,8 @@ function Studies() {
     } else {
       let taskIsTrue = !taskUpdate[0].status;
       /*const { data: newTask } =*/ await axios.put(
-        `http://localhost:3001/tasks/${id}`,
+        // `http://localhost:3001/tasks/${id}`,
+        `https://project-hackton-react-api.vercel.app/tasks/${id}`,
         {
           status: taskIsTrue,
         }
@@ -130,7 +138,8 @@ function Studies() {
       //console.log(newTask);
 
       const { data: newTaskGet } = await axios.get(
-        "http://localhost:3001/tasks"
+        // "http://localhost:3001/tasks"
+        "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
         if (task.category === "estudos") {
@@ -147,12 +156,16 @@ function Studies() {
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      await axios.delete(`http://localhost:3001/tasks/${id}`);
+      await axios.delete(
+        /*`http://localhost:3001/tasks/${id}`*/ `https://project-hackton-react-api.vercel.app/tasks/${id}`
+      );
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
-    const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+    const { data: newTask } = await axios.get(
+      /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
+    );
     const newTaskSearch = newTask.filter((task) => {
       if (task.category === "estudos") {
         return task;

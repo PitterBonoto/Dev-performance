@@ -57,12 +57,16 @@ function Leisure() {
   const [tasks, setTasks] = useState([]);
 
   async function handleCreateTask() {
-    const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
-      /*id: v4(),*/
-      title: task,
-      isComplete: false,
-      category: "lazer",
-    });
+    // const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
+    const { data: newTask } = await axios.post(
+      "https://project-hackton-react-api.vercel.app/tasks",
+      {
+        /*id: v4(),*/
+        title: task,
+        isComplete: false,
+        category: "lazer",
+      }
+    );
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
@@ -77,7 +81,10 @@ function Leisure() {
 
   useEffect(() => {
     async function fetchTasks() {
-      const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+      // const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+      const { data: newTask } = await axios.get(
+        "https://project-hackton-react-api.vercel.app/tasks"
+      );
       const newTaskSearch = newTask.filter((task) => {
         if (task.category === "lazer") {
           return task;
@@ -95,8 +102,11 @@ function Leisure() {
     //console.log(taskUpdate[0]._id);
     if (taskUpdate[0]._id === id && taskUpdate[0].status === false) {
       let taskIsTrue = !taskUpdate[0].status;
-      /*const data: newTask =*/ await axios.put(
-        `http://localhost:3001/tasks/${id}`,
+      /*const data: newTask = await axios.put(
+        `http://localhost:3001/tasks/${id}`,*/
+      await axios.put(
+        `https://project-hackton-react-api.vercel.app/tasks/${id}`,
+
         {
           status: taskIsTrue,
         }
@@ -104,7 +114,8 @@ function Leisure() {
       //console.log(newTask);
 
       const { data: newTaskGet } = await axios.get(
-        "http://localhost:3001/tasks"
+        // "http://localhost:3001/tasks"
+        "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
         if (task.category === "lazer") {
@@ -118,7 +129,8 @@ function Leisure() {
     } else {
       let taskIsTrue = !taskUpdate[0].status;
       /*const { data: newTask } =*/ await axios.put(
-        `http://localhost:3001/tasks/${id}`,
+        // `http://localhost:3001/tasks/${id}`,
+        `https://project-hackton-react-api.vercel.app/tasks/${id}`,
         {
           status: taskIsTrue,
         }
@@ -126,7 +138,8 @@ function Leisure() {
       //console.log(newTask);
 
       const { data: newTaskGet } = await axios.get(
-        "http://localhost:3001/tasks"
+        // "http://localhost:3001/tasks"
+        "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
         if (task.category === "lazer") {
@@ -143,12 +156,16 @@ function Leisure() {
     if (task.id === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      await axios.delete(`http://localhost:3001/tasks/${id}`);
+      await axios.delete(
+        /*`http://localhost:3001/tasks/${id}`*/ `https://project-hackton-react-api.vercel.app/tasks/${id}`
+      );
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
-    const { data: newTask } = await axios.get("http://localhost:3001/tasks");
+    const { data: newTask } = await axios.get(
+      /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
+    );
     const newTaskSearch = newTask.filter((task) => {
       if (task.category === "lazer") {
         return task;
