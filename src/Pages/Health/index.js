@@ -59,8 +59,9 @@ function Health() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  const email = localStorage.getItem("ls_email");
+
   async function handleCreateTask() {
-    const email = localStorage.getItem("ls_email");
     const { data: newTask } = await axios.post(
       // "http://localhost:3001/tasks", {
       "https://project-hackton-react-api.vercel.app/tasks",
@@ -88,12 +89,12 @@ function Health() {
         /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTask.filter((task) => {
-        if (task.category === "saude") {
+        if (task.category === "saude" /*&& task.email === email*/) {
           return task;
         }
         return 0;
       });
-      //console.log(newTask);
+      console.log(newTaskSearch);
       //console.log(newTaskSearch);
       //console.log();
       setTasks(newTaskSearch);
