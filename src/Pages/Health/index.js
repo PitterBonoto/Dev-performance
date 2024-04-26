@@ -89,6 +89,9 @@ function Health() {
         /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTask.filter((task) => {
+        console.log(task.email);
+        console.log(email);
+
         if (task.category === "saude" && task.email === email) {
           return task;
         }
