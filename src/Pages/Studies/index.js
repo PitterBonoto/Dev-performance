@@ -58,6 +58,8 @@ function Studies() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  let email = localStorage.getItem("ls_email");
+
   async function handleCreateTask() {
     const { data: newTask } = await axios.post(
       // "http://localhost:3001/tasks",
@@ -67,6 +69,7 @@ function Studies() {
         title: task,
         isComplete: false,
         category: "estudos",
+        email: email,
       }
     );
     if (task === "") {
@@ -84,10 +87,11 @@ function Studies() {
   useEffect(() => {
     async function fetchTasks() {
       const { data: newTask } = await axios.get(
-        /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
+        /*"http://localhost:3001/tasks"*/
+        "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTask.filter((task) => {
-        if (task.category === "estudos") {
+        if (task.category === "estudos" && task.email === email) {
           return task;
         }
         return 0;
@@ -118,7 +122,7 @@ function Studies() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
-        if (task.category === "estudos") {
+        if (task.category === "estudos" && task.email === email) {
           return task;
         }
         return 0;
@@ -142,7 +146,7 @@ function Studies() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
-        if (task.category === "estudos") {
+        if (task.category === "estudos" && task.email === email) {
           return task;
         }
         return 0;
@@ -157,17 +161,19 @@ function Studies() {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
       await axios.delete(
-        /*`http://localhost:3001/tasks/${id}`*/ `https://project-hackton-react-api.vercel.app/tasks/${id}`
+        /*`http://localhost:3001/tasks/${id}`*/
+        `https://project-hackton-react-api.vercel.app/tasks/${id}`
       );
       const taskDelete = tasks.filter((task) => task.id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
     const { data: newTask } = await axios.get(
-      /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
+      /*"http://localhost:3001/tasks"*/
+      "https://project-hackton-react-api.vercel.app/tasks"
     );
     const newTaskSearch = newTask.filter((task) => {
-      if (task.category === "estudos") {
+      if (task.category === "estudos" && task.email === email) {
         return task;
       }
       return 0;

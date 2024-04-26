@@ -56,6 +56,8 @@ function Leisure() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
 
+  let email = localStorage.getItem("ls_email");
+
   async function handleCreateTask() {
     // const { data: newTask } = await axios.post("http://localhost:3001/tasks", {
     const { data: newTask } = await axios.post(
@@ -65,6 +67,7 @@ function Leisure() {
         title: task,
         isComplete: false,
         category: "lazer",
+        email: email,
       }
     );
     if (task === "") {
@@ -86,7 +89,7 @@ function Leisure() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTask.filter((task) => {
-        if (task.category === "lazer") {
+        if (task.category === "lazer" && task.email === email) {
           return task;
         }
         return 0;
@@ -118,7 +121,7 @@ function Leisure() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
-        if (task.category === "lazer") {
+        if (task.category === "lazer" && task.email === email) {
           return task;
         }
         return 0;
@@ -142,7 +145,7 @@ function Leisure() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
-        if (task.category === "lazer") {
+        if (task.category === "lazer" && task.email === email) {
           return task;
         }
         return 0;
@@ -167,7 +170,7 @@ function Leisure() {
       /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
     );
     const newTaskSearch = newTask.filter((task) => {
-      if (task.category === "lazer") {
+      if (task.category === "lazer" && task.email === email) {
         return task;
       }
       return 0;
