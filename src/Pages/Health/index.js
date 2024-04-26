@@ -60,6 +60,7 @@ function Health() {
   const [tasks, setTasks] = useState([]);
 
   async function handleCreateTask() {
+    const email = localStorage.getItem("ls_email");
     const { data: newTask } = await axios.post(
       // "http://localhost:3001/tasks", {
       "https://project-hackton-react-api.vercel.app/tasks",
@@ -68,12 +69,13 @@ function Health() {
         title: task,
         isComplete: false,
         category: "saude",
+        email: email,
       }
     );
     if (task === "") {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
-      //console.log(newTask);
+      //console.log(email);
       setTasks([...tasks, newTask]);
       //console.log(newTask);
       setTask("");
@@ -93,6 +95,7 @@ function Health() {
       });
       //console.log(newTask);
       //console.log(newTaskSearch);
+      //console.log();
       setTasks(newTaskSearch);
     }
     fetchTasks();

@@ -47,7 +47,7 @@ function App() {
     } else {
       try {
         const { data: userSearch } = await axios.post(
-          // "http://localhost:3001/login",
+          //"http://localhost:3001/login",
           "https://project-hackton-react-api.vercel.app/login",
           {
             email: user,
@@ -56,6 +56,8 @@ function App() {
         );
 
         if (userSearch.email === user && userSearch.password === password) {
+          localStorage.setItem("ls_email", user);
+
           navigate("/Home");
           //alert("home");
           setUser("");
