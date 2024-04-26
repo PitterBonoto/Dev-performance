@@ -155,8 +155,6 @@ export const Input = styled.input`
   color: #fc791e;
   font-size: 16px;
   font-weight: 400;
-
-  //&:disabled {background: #fff};
   }
 
   @media only screen and (max-width: 1023px) {
@@ -181,6 +179,12 @@ export const Button = styled.button`
 
   &:active {
     opacity: 0.4;
+  }
+
+  &:disabled {
+    background: rgba(255, 255, 255, 0.25);
+    color: #1c1c1c;
+    opacity: none;
   }
 
   @media only screen and (max-width: 1023px) {
