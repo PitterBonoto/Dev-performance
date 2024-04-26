@@ -55,9 +55,20 @@ function App() {
     SetModalIsOpen(false);
   }
 
+  let email = localStorage.getItem("ls_email");
+
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
+      <Title
+        style={{
+          fontSize: "18px",
+          color: "#2e2e2e",
+          filter: "drop-shadow(2px 2px 4px #fff)",
+        }}
+      >
+        Olá! {email}
+      </Title>
       <Title>Os pilares da Produtividade</Title>
       <ExitButton onClick={GoToExit}>Sair</ExitButton>
 

@@ -281,6 +281,15 @@ function Studies() {
       <ToastContainer />
       <Logo alt="Logo" src={LogoImg} />
       <Nav>
+        <Title
+          style={{
+            fontSize: "18px",
+            color: "#2e2e2e",
+            filter: "drop-shadow(2px 2px 4px #fff)",
+          }}
+        >
+          Olá! {email}
+        </Title>
         <Title>Estudos</Title>
         <ButtonBack onClick={GoToHome}>Página inicial</ButtonBack>
       </Nav>
