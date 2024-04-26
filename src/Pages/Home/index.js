@@ -40,6 +40,7 @@ function App() {
   }
 
   function GoToExit() {
+    localStorage.removeItem("ls_email");
     navigate("/");
   }
 
@@ -60,35 +61,34 @@ function App() {
       <Title>Os pilares da Produtividade</Title>
       <ExitButton onClick={GoToExit}>Sair</ExitButton>
 
-      
-        <Roof>
-          <p>SUCESSO</p>
-        </Roof>
+      <Roof>
+        <p>SUCESSO</p>
+      </Roof>
 
-        <ContainerItens>
-          <CornerstoneContainer>
-            <Cornerstone onClick={GoToHealth}>
-              <CornestoneTitle>SAÚDE</CornestoneTitle>
-            </Cornerstone>
-          </CornerstoneContainer>
+      <ContainerItens>
+        <CornerstoneContainer>
+          <Cornerstone onClick={GoToHealth}>
+            <CornestoneTitle>SAÚDE</CornestoneTitle>
+          </Cornerstone>
+        </CornerstoneContainer>
 
-          <CornerstoneContainer>
-            <Cornerstone onClick={GoToStudies}>
-              <CornestoneTitle>ESTUDOS</CornestoneTitle>
-            </Cornerstone>
-          </CornerstoneContainer>
+        <CornerstoneContainer>
+          <Cornerstone onClick={GoToStudies}>
+            <CornestoneTitle>ESTUDOS</CornestoneTitle>
+          </Cornerstone>
+        </CornerstoneContainer>
 
-          <CornerstoneContainer>
-            <Cornerstone onClick={GoToLeisure}>
-              <CornestoneTitle>LAZER</CornestoneTitle>
-            </Cornerstone>
-          </CornerstoneContainer>
-        </ContainerItens>
+        <CornerstoneContainer>
+          <Cornerstone onClick={GoToLeisure}>
+            <CornestoneTitle>LAZER</CornestoneTitle>
+          </Cornerstone>
+        </CornerstoneContainer>
+      </ContainerItens>
 
-        <Base onClick={openModal}>
-          <BaseTitle>COMECE POR AQUI</BaseTitle>
-        </Base>
-     
+      <Base onClick={openModal}>
+        <BaseTitle>COMECE POR AQUI</BaseTitle>
+      </Base>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -111,7 +111,7 @@ function App() {
               jornada. Saber o seu porquê e o seu por quem irá te ajudar a se
               manter firme nessa caminhada que terá altos e baixos.
             </li>
-            <br/>
+            <br />
             <li>
               Tenha uma META clara em relação aos seus objetivos. O que você
               quer? O que você precisa fazer para chegar lá? Como você irá
@@ -119,7 +119,7 @@ function App() {
               gerenciar. Crie uma meta razoável e à medida que alcançar seus
               objetivos, trace outros objetivos para você.
             </li>
-            <br/>
+            <br />
             <li>
               Gerencie suas frustrações: VOCÊ VAI SE FRUSTRAR! Sua jornada será
               longa e pelo caminho haverá dificuldades e frustrações. Fique
@@ -131,7 +131,7 @@ function App() {
               em movimento é melhor que ficar parado. Volte o mais breve
               possível.
             </li>
-            <br/>
+            <br />
             <li>
               AJUSTE SUAS EXPECTATIVAS: fique atento as expectativas que você
               tem nesse processo. Sucesso não é sobre execução perfeita, tempo
