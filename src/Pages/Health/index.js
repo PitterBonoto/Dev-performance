@@ -126,7 +126,7 @@ function Health() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
-        if (task.category === "saude") {
+        if (task.category === "saude" && task.email === email) {
           return task;
         }
         return 0;
@@ -150,7 +150,7 @@ function Health() {
         "https://project-hackton-react-api.vercel.app/tasks"
       );
       const newTaskSearch = newTaskGet.filter((task) => {
-        if (task.category === "saude") {
+        if (task.category === "saude" && task.email === email) {
           return task;
         }
         return 0;
@@ -165,17 +165,19 @@ function Health() {
       toast.error("🤔 Você precisa digitar pelo menos uma tarefa 🤔.");
     } else {
       await axios.delete(
-        /*`http://localhost:3001/tasks/${id}`*/ `https://project-hackton-react-api.vercel.app/tasks/${id}`
+        /*`http://localhost:3001/tasks/${id}`*/
+        `https://project-hackton-react-api.vercel.app/tasks/${id}`
       );
       const taskDelete = tasks.filter((task) => task._id !== id);
       setTasks(taskDelete);
       toast.success("😁 Sua tarefa foi excluida 😁.");
     }
     const { data: newTask } = await axios.get(
-      /*"http://localhost:3001/tasks"*/ "https://project-hackton-react-api.vercel.app/tasks"
+      /*"http://localhost:3001/tasks"*/
+      "https://project-hackton-react-api.vercel.app/tasks"
     );
     const newTaskSearch = newTask.filter((task) => {
-      if (task.category === "saude") {
+      if (task.category === "saude" && task.email === email) {
         return task;
       }
       return 0;
