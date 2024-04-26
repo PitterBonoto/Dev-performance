@@ -11,13 +11,12 @@ export const Container = styled.div`
   gap: 80px;
 
   @media only screen and (max-width: 1023px) {
-  flex-direction: column;
-  gap: 0;
-  justify-content: start;
-  background-size: 250% 100%;
-  background-position: bottom;
-}
-
+    flex-direction: column;
+    gap: 0;
+    justify-content: start;
+    background-size: 250% 100%;
+    background-position: bottom;
+  }
 `;
 
 export const Welcome = styled.div`
@@ -29,8 +28,7 @@ export const Welcome = styled.div`
     text-align: center;
     margin-top: 13vh;
     gap: 10px;
-}
-
+  }
 `;
 
 export const Logo = styled.img`
@@ -44,7 +42,7 @@ export const Logo = styled.img`
     width: 130px;
     left: 15px;
     top: 15px;
-}
+  }
 `;
 
 export const WelcomeTitle = styled.h1`
@@ -54,9 +52,8 @@ export const WelcomeTitle = styled.h1`
   font-size: 45px;
 
   @media only screen and (max-width: 1023px) {
-  font-size: 20px;
-}
-
+    font-size: 20px;
+  }
 `;
 
 export const WelcomeTitle1 = styled.h3`
@@ -67,9 +64,8 @@ export const WelcomeTitle1 = styled.h3`
   text-align: center;
 
   @media only screen and (max-width: 1023px) {
-  font-size: 15px;
-}
-
+    font-size: 15px;
+  }
 `;
 
 export const Quote = styled.p`
@@ -86,13 +82,12 @@ export const Quote = styled.p`
   }
 
   @media only screen and (max-width: 1023px) {
- display: none;
-}
-
+    display: none;
+  }
 `;
 
 export const ContainerItens = styled.div`
- background: linear-gradient(
+  background: linear-gradient(
     157deg,
     rgba(255, 255, 255, 0) 0.2%,
     rgba(255, 255, 255, 0) 0.5%,
@@ -108,37 +103,35 @@ export const ContainerItens = styled.div`
 
   @media only screen and (max-width: 1023px) {
     background: linear-gradient(
-    157deg,
-    rgba(255, 255, 255, 0) 0.2%,
-    rgba(255, 255, 255, 0.1) 0.5%,
-    rgba(255, 255, 255, 0.2) 100%
-  );
-  margin-right: 0;
-  padding: 20px;
-  position: absolute;
-  top: 25%;
-  backdrop-filter: none;
-}
-
+      157deg,
+      rgba(255, 255, 255, 0) 0.2%,
+      rgba(255, 255, 255, 0.1) 0.5%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    margin-right: 0;
+    padding: 20px;
+    position: absolute;
+    top: 25%;
+    backdrop-filter: none;
+  }
 `;
 
 export const Title = styled.h1`
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 30px;
   font-weight: 400;
   margin-bottom: 30px;
 
   @media only screen and (max-width: 1023px) {
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #2c2b2b;
-}
-
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #2c2b2b;
+  }
 `;
 
 export const InputLabel = styled.p`
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.408px;
@@ -146,7 +139,7 @@ export const InputLabel = styled.p`
 
   @media only screen and (max-width: 1023px) {
     color: #2c2b2b;
-}
+  }
 `;
 
 export const Input = styled.input`
@@ -163,10 +156,12 @@ export const Input = styled.input`
   font-size: 16px;
   font-weight: 400;
 
-  @media only screen and (max-width: 1023px) {
-  padding: 7px 20px;
-}
+  //&:disabled {background: #fff};
+  }
 
+  @media only screen and (max-width: 1023px) {
+    padding: 7px 20px;
+  }
 `;
 
 export const Button = styled.button`
@@ -189,13 +184,12 @@ export const Button = styled.button`
   }
 
   @media only screen and (max-width: 1023px) {
-  margin-top: 20px;
-}
-
+    margin-top: 20px;
+  }
 `;
 
 export const Register = styled.a`
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   margin-top: 20px;
   cursor: pointer;
@@ -209,9 +203,8 @@ export const Register = styled.a`
   }
 
   @media only screen and (max-width: 1023px) {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #2c2b2b;
-}
-
+    margin-top: 10px;
+    font-size: 12px;
+    color: #2c2b2b;
+  }
 `;

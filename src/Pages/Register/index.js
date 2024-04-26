@@ -20,6 +20,7 @@ import {
   Register,
 } from "../../components/Login-pages/styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
+import styled from "styled-components";
 
 function App() {
   const navigate = useNavigate();
@@ -104,7 +105,12 @@ function App() {
           value={passwordConfirm}
           onChange={(ev) => setPasswordConfirm(ev.target.value)}
         />
-        <Button onClick={ToRegister}>Cadastrar</Button>
+        <Button
+          onClick={ToRegister}
+          disabled={user && password && passwordConfirm !== "" ? false : true}
+        >
+          Cadastrar
+        </Button>
         <Register onClick={ToBackHome}>Voltar Login</Register>
       </ContainerItens>
     </Container>
