@@ -7,6 +7,7 @@ import { ContainerPrincipal } from "./styles";
 
 import {
   Nav,
+  WelcomeUser,
   Logo,
   Title,
   ButtonBack,
@@ -255,15 +256,7 @@ function Leisure() {
       <ToastContainer />
       <Logo alt="Logo" src={LogoImg} />
       <Nav>
-        <Title
-          style={{
-            fontSize: "18px",
-            color: "#2e2e2e",
-            filter: "drop-shadow(2px 2px 4px #fff)",
-          }}
-        >
-          Olá! {email}
-        </Title>
+        <WelcomeUser>Olá! {email}</WelcomeUser>
         <Title>Lazer</Title>
         <ButtonBack onClick={GoToHome}>Página inicial</ButtonBack>
       </Nav>

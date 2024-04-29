@@ -8,6 +8,7 @@ import {
   Logo,
   Title,
   ExitButton,
+  WelcomeUser,
   Roof,
   ContainerItens,
   CornerstoneContainer,
@@ -23,6 +24,7 @@ import {
   ButtonModal,
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
+import { Users } from "lucide-react";
 
 function App() {
   const navigate = useNavigate();
@@ -60,15 +62,9 @@ function App() {
   return (
     <Container>
       <Logo alt="Logo" src={Logo1} />
-      <Title
-        style={{
-          fontSize: "18px",
-          color: "#2e2e2e",
-          filter: "drop-shadow(2px 2px 4px #fff)",
-        }}
-      >
-        Olá! {email}
-      </Title>
+      <WelcomeUser>
+        Olá! <br></br> {email}
+      </WelcomeUser>
       <Title>Os pilares da Produtividade</Title>
       <ExitButton onClick={GoToExit}>Sair</ExitButton>
 

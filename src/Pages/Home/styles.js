@@ -44,8 +44,7 @@ export const Title = styled.h1`
 
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
     margin-top: 140px;
-}
-
+  }
 `;
 
 export const ExitButton = styled.button`
@@ -65,6 +64,21 @@ export const ExitButton = styled.button`
     right: 15px;
     top: 15px;
     padding: 12px 25px;
+  }
+`;
+
+export const WelcomeUser = styled.p`
+  font-family: "Special Elite", system-ui;
+  text-align: right;
+  font-size: 18px;
+  position: absolute;
+  right: 25px;
+  top: 90px;
+  line-height: 1.2;
+
+  @media only screen and (max-width: 767px) {
+    font-size: 12px;
+    margin-top: -15px;
   }
 `;
 
@@ -240,9 +254,9 @@ export const ContainerModal = styled.div`
   max-height: 100%;
 
   @media only screen and (max-width: 1023px) {
-  gap: 10px;
-  width: 90%;
-}
+    gap: 10px;
+    width: 90%;
+  }
 `;
 
 export const TitleModal = styled.h1`
@@ -252,8 +266,8 @@ export const TitleModal = styled.h1`
   text-shadow: 1px 1px 5px #000000;
 
   @media only screen and (max-width: 1023px) {
-  margin-top: 15px;
-}
+    margin-top: 15px;
+  }
 `;
 
 export const CaptionModal = styled.h4`
@@ -273,14 +287,12 @@ export const ListModal = styled.ul`
   color: #2c2b2b;
   font-size: 17px;
 
-@media only screen and (max-width: 1023px) {
-  overflow: auto;
-  &::-webkit-scrollbar {
+  @media only screen and (max-width: 1023px) {
+    overflow: auto;
+    &::-webkit-scrollbar {
       display: none;
     }
-}
-
-
+  }
 `;
 export const ButtonModal = styled.button`
   border-radius: 10px;
@@ -304,13 +316,10 @@ export const ButtonModal = styled.button`
   }
 
   @media only screen and (max-width: 1023px) {
-  position: absolute;
-  top: auto;
-  bottom: 10px;
-  right: 10px;
-  padding: 7px 10px;
-
-
-}
-
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+    padding: 7px 10px;
+  }
 `;

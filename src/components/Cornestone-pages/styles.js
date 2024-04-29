@@ -32,6 +32,26 @@ export const Nav = styled.div`
   }
 `;
 
+export const WelcomeUser = styled.p`
+  font-family: "Special Elite", system-ui;
+  text-align: right;
+  font-size: 18px;
+  margin-top: 20px;
+
+  @media only screen and (max-width: 767px) {
+    margin-top: -10px;
+    font-size: 12px;
+  }
+
+  
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    position: absolute;
+    bottom: -30px;
+  }
+
+  
+`;
+
 export const Title = styled.h1`
   font-family: "Special Elite", system-ui;
   font-weight: 400;
