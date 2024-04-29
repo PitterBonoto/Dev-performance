@@ -20,7 +20,7 @@ import {
   Register,
 } from "../../components/Login-pages/styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
-import styled from "styled-components";
+//import styled from "styled-components";
 
 function App() {
   const navigate = useNavigate();
