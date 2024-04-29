@@ -97,7 +97,7 @@ function Leisure() {
       setTasks(newTaskSearch);
     }
     fetchTasks();
-  }, []);
+  }, [email]);
 
   async function handleUpdateTask(id) {
     //const taskComplete = tasks.map((taskItem) => {
