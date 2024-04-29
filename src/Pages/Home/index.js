@@ -24,7 +24,7 @@ import {
   ButtonModal,
 } from "./styles";
 import Logo1 from "../../assets/logo-dev-performance.png";
-import { Users } from "lucide-react";
+//import { Users } from "lucide-react";
 
 function App() {
   const navigate = useNavigate();
