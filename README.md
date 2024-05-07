@@ -61,7 +61,7 @@ No desenvolcimento do aplicativo enfrentamos varios problemas com relação a co
 
 Construção de Modal
 
-- Foi criado os modais utilizando a dependência "react-modal", porém como foi utilizado styled components no projeto e era preciso editar classes internas do modal, a solução encontrada foi criar um arquivo de estilo css para estilizar essas classes.
+- Como Solucinar: Foi criado os modais utilizando a dependência "react-modal", porém como foi utilizado styled components no projeto e era preciso editar classes internas do modal, a solução encontrada foi criar um arquivo de estilo css para estilizar essas classes.
 
 ### Problema 2:
 
