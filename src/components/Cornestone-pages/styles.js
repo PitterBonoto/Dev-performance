@@ -43,13 +43,10 @@ export const WelcomeUser = styled.p`
     font-size: 12px;
   }
 
-  
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
     position: absolute;
     bottom: -30px;
   }
-
-  
 `;
 
 export const Title = styled.h1`
@@ -489,9 +486,9 @@ export const ParagraphModal = styled.p`
   width: 90%;
   overflow: auto;
 
-    &::-webkit-scrollbar {
-      display: none;
-    } 
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const ListModal = styled.ul`
@@ -499,7 +496,6 @@ export const ListModal = styled.ul`
   color: #2c2b2b;
   font-size: 17px;
   margin-top: 10px;
-
 `;
 export const ButtonModal = styled.button`
   border-radius: 10px;
