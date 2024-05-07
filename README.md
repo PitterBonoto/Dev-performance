@@ -8,9 +8,7 @@ Ainda dentro dos Pilares temos videos / Textos referentes a cada assunto, deixan
 
 ### Tecnologias Utilizadas
 
-Liste as tecnologias (linguagens, ferramentas, bibliotecas) que você utilizou para elaborar o projeto. Essa parte é importante para quando um recrutador (que não tem conhecimento de programação) acessar o seu projeto, ele vai saber só olhando a documentação quais tecnologias você já conhece!
-
-Exemplo:
+Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto. 
 
 - [DevPerformance](https://github.com/PitterBonoto/project-hackton-react)
 - [MongoDB (Atlas)](https://www.mongodb.com/)
@@ -21,7 +19,7 @@ Exemplo:
 
 ## Dependências e Versões Necessárias
 
-Liste as dependências necessárias para rodar o projeto e as versões que você utilizou.
+Listado as dependências necessárias para rodar o projeto e as versões utilizadas.
 
 - axios: 1.6.8
 - lucide-react: 0.364.0
