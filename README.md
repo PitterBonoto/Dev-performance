@@ -61,13 +61,13 @@ No desenvolcimento do aplicativo enfrentamos varios problemas com relação a co
 
 Construção de Modal
 
-- Como solucionar: explicar a solução.
+- Foi criado os modais utilizando a dependência "react-modal", porém como foi utilizado styled components no projeto e era preciso editar classes internas do modal, a solução encontrada foi criar um arquivo de estilo css para estilizar essas classes.
 
 ### Problema 2:
 
 Construção da barra de status das tarefas
 
-- Como solucionar: explicar a solução.
+- Como solucionar: Para a construção da barra de progresso, como não estava sendo usado nenhum componente pronto, foram criado duas div´s uma externa onde limita o tamanho da barra e uma interna que simula o progresso da mesma.Foi criado um função que faz a média das tarefas executadas e tranforma em porcentagem. Foi criado uma função com uma condicional que muda o width da div interna e o colore de acordo com a porcentagem do progresso (começando do vermelho até chegar ao verde que é 100%).
 
 ### Problema 3:
 
