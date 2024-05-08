@@ -113,5 +113,5 @@ Filtrar tarefas pro usuários
 <h5>O vídeo abaixo demonstra uma prévia da aplicação sendo utilizada pelo usuário.</h5>
 <br>
 
-<img  src="https://github.com/PitterBonoto/project-hackton-react/blob/master/src/assets/gif-readme-dev-performance.gif?raw=true" width=90% dis>
+<img  src="https://github.com/PitterBonoto/project-hackton-react/blob/master/src/assets/gif-readme-dev-performance.gif?raw=true" width=100% dis>
 
