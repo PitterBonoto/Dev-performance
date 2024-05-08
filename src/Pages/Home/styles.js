@@ -34,7 +34,7 @@ export const Title = styled.h1`
   font-family: "Special Elite", system-ui;
   font-weight: 400;
   font-size: 40px;
-  margin-top: 3%;
+  margin-top: 8vh;
 
   @media only screen and (max-width: 767px) {
     margin-top: 140px;
@@ -45,6 +45,11 @@ export const Title = styled.h1`
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
     margin-top: 140px;
   }
+
+  @media only screen and (min-width: 1400px) {
+    margin-top: 20vh;
+  }
+
 `;
 
 export const ExitButton = styled.button`
