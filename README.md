@@ -8,7 +8,7 @@ Ainda dentro dos Pilares temos videos / Textos referentes a cada assunto, deixan
 
 ### Tecnologias Utilizadas
 
-Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto. 
+Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto, bem como a responsividade da aplicação em desktop e mobile. 
 
 - [DevPerformance](https://github.com/PitterBonoto/project-hackton-react)
 - [MongoDB (Atlas)](https://www.mongodb.com/)
