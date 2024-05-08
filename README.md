@@ -8,9 +8,7 @@ Ainda dentro dos Pilares temos videos / Textos referentes a cada assunto, deixan
 
 ### Tecnologias Utilizadas
 
-Liste as tecnologias (linguagens, ferramentas, bibliotecas) que você utilizou para elaborar o projeto. Essa parte é importante para quando um recrutador (que não tem conhecimento de programação) acessar o seu projeto, ele vai saber só olhando a documentação quais tecnologias você já conhece!
-
-Exemplo:
+Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto. 
 
 - [DevPerformance](https://github.com/PitterBonoto/project-hackton-react)
 - [MongoDB (Atlas)](https://www.mongodb.com/)
@@ -21,7 +19,7 @@ Exemplo:
 
 ## Dependências e Versões Necessárias
 
-Liste as dependências necessárias para rodar o projeto e as versões que você utilizou.
+Listado as dependências necessárias para rodar o projeto e as versões utilizadas.
 
 - axios: 1.6.8
 - lucide-react: 0.364.0
@@ -61,7 +59,7 @@ No desenvolcimento do aplicativo enfrentamos varios problemas com relação a co
 
 Construção de Modal
 
-- Foi criado os modais utilizando a dependência "react-modal", porém como foi utilizado styled components no projeto e era preciso editar classes internas do modal, a solução encontrada foi criar um arquivo de estilo css para estilizar essas classes.
+- Como Solucinar: Foi criado os modais utilizando a dependência "react-modal", porém como foi utilizado styled components no projeto e era preciso editar classes internas do modal, a solução encontrada foi criar um arquivo de estilo css para estilizar essas classes.
 
 ### Problema 2:
 
@@ -110,3 +108,10 @@ Filtrar tarefas pro usuários
 ### instalar o uuid
 
     -> yarn add yup
+
+
+<h5>O vídeo abaixo demonstra uma prévia da aplicação sendo utilizada pelo usuário.</h5>
+<br>
+
+<img  src="https://github.com/PitterBonoto/Project-currency-converter/blob/main/assets/gif-conversor-de-moedas.gif?raw=true" width=950px dis>
+
