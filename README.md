@@ -8,7 +8,7 @@ Ainda dentro dos Pilares temos videos / Textos referentes a cada assunto, deixan
 
 ### Tecnologias Utilizadas
 
-Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto. 
+Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto, bem como a responsividade da aplicação em desktop e mobile. 
 
 - [DevPerformance](https://github.com/PitterBonoto/project-hackton-react)
 - [MongoDB (Atlas)](https://www.mongodb.com/)
@@ -113,5 +113,5 @@ Filtrar tarefas pro usuários
 <h5>O vídeo abaixo demonstra uma prévia da aplicação sendo utilizada pelo usuário.</h5>
 <br>
 
-<img  src="https://github.com/PitterBonoto/Project-currency-converter/blob/main/assets/gif-conversor-de-moedas.gif?raw=true" width=950px dis>
+<img  src="https://github.com/PitterBonoto/project-hackton-react/blob/master/src/assets/gif-readme-dev-performance.gif?raw=true" width=100% dis>
 
