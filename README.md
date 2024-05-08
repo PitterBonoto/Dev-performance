@@ -8,7 +8,7 @@ Ainda dentro dos Pilares temos videos / Textos referentes a cada assunto, deixan
 
 ### Tecnologias Utilizadas
 
-Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto, bem como a responsividade da aplicação em desktop e mobile. 
+Listado as tecnologias (linguagens, ferramentas, bibliotecas) utilizadas para elaborar o projeto, bem como a responsividade da aplicação em desktop e mobile.
 
 - [DevPerformance](https://github.com/PitterBonoto/project-hackton-react)
 - [MongoDB (Atlas)](https://www.mongodb.com/)
@@ -37,9 +37,17 @@ Listado as dependências necessárias para rodar o projeto e as versões utiliza
 
 Para esse item, nós efetuamos o deploy do projeto colocamos nos server do mongoDB(atlas) (banco de dados), Netlify(front-end) e Vercel(back-end)
 
-Para acessar base entrar no link abaixo:
+#
+
+## Para acessar base entrar no link abaixo:
 
 ### https://devperformance.netlify.app/
+
+## O vídeo abaixo demonstra uma prévia da aplicação sendo utilizada pelo usuário.
+
+## Veja uma demostração
+
+<img  src="https://github.com/PitterBonoto/project-hackton-react/blob/master/src/assets/gif-readme-dev-performance.gif?raw=true" width=100% dis>
 
 ## 📌 (DevPerformance) - Informações importantes sobre a aplicação (exemplo) 📌
 
@@ -98,7 +106,7 @@ Filtrar tarefas pro usuários
 ### instalar o axios
 
     -> yarn add axios
-    -> utilizar essa forma de import onde for usar ==> import axios from "axios";
+    -> utilizar essa forma de import onde for usar -> import axios from "axios";
 
 ### instalar o uuid
 
@@ -108,10 +116,3 @@ Filtrar tarefas pro usuários
 ### instalar o uuid
 
     -> yarn add yup
-
-
-<h5>O vídeo abaixo demonstra uma prévia da aplicação sendo utilizada pelo usuário.</h5>
-<br>
-
-<img  src="https://github.com/PitterBonoto/project-hackton-react/blob/master/src/assets/gif-readme-dev-performance.gif?raw=true" width=100% dis>
-
