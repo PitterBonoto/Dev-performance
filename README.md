@@ -1,6 +1,6 @@
 # DOCUMENTAÇÃO FRONT-END - DevPerformance / Front-End
 
-O DevPerformance nasceu com o objetivo de ser um organizador de tarefas, tem como regra procipal listar tarefas em 3 grandes pilares o de Saúde, Estudo e Lazer.
+O DevPerformance nasceu com o objetivo de ser um organizador de tarefas, tem como regra principal listar tarefas em 3 grandes pilares o de Saúde, Estudo e Lazer.
 
 Cada pilar citado acima corresponde a um nicho específico da nossa plataforma, dentro de cada pilar é possível conseguir visualizar as tarefas apenas do pilar em questão bem como ao usuário que ela estará amarrada.
 
